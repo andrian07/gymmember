@@ -16,12 +16,15 @@ class Register extends CI_Controller {
 
 	public function index()
 	{
+
+		/*
 		if(isset($_SESSION['user_name']) != null){
 			$this->load->view('Pages/register');
 			//redirect('Dashboard/Admin', 'refresh');
 		}else{
 			$this->load->view('Pages/register');
-		}
+		}*/
+		$this->load->view('Pages/Register/registerdaily');
 	}
 
 	public function forgetpass()

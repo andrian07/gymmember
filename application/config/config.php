@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url']    = 'http://localhost/gymmember';
+$config['base_url']    = 'http://localhost/gymmember/';
 $config['header1'] = "gymmember/application/views/pages/header1.php";
 $config['footer1'] = "gymmember/application/views/pages/footer1.php";
 
@@ -461,8 +461,8 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
 $config['csrf_protection'] = TRUE;
-$config['csrf_token_name'] = 'csrf_test_name';
-$config['csrf_cookie_name'] = 'csrf_cookie_name';
+$config['csrf_token_name'] = 'csrf_elluna';
+$config['csrf_cookie_name'] = 'csrf_cookie_elluna';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = array();
