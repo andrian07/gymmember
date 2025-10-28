@@ -1,0 +1,18 @@
+{
+    "name": "Elluna Gym",
+    "short_name": "Elluna Gym",
+    "start_url": "https://gym.ellunaindonesia.com/",
+    "display": "standalone",
+    "scope" : "/",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "img/logo.png",
+            "type": "image/png",
+            "sizes": "180x180",
+            "purpose": "any maskable"
+        }
+    ]
+}
