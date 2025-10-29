@@ -37,9 +37,11 @@ class Register extends CI_Controller {
 		}
 	}
 
-	public function save_register()
+	public function successregister()
 	{
-		
+		$id = $this->input->get('id');
+		$get_transaction['get_transaction'] = $this->global_model->get_transaction($id)->result_array();
+		$this->load->view('Pages/Register/succesregister', $get_transaction);
 	}
 
 }
