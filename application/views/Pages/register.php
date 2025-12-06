@@ -93,6 +93,16 @@ require DOC_ROOT_PATH . $this->config->item('header1');
 
                         <div class="form-group basic">
                             <div class="input-wrapper">
+                                <label class="label" for="pass">Kore Referal</label>
+                                <input type="text" class="form-control" id="referal_code">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
                                 <label class="label" for="pass">Password</label>
                                 <input type="password" class="form-control" id="pass">
                                 <i class="clear-input">

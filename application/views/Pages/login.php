@@ -80,6 +80,6 @@ require DOC_ROOT_PATH . $this->config->item('header1');
     <script>
         function dashboard()
         {
-            window.location.href = "http://localhost/gymmember/dashboard";
+            window.location.href = "<?php echo base_url(); ?>dashboard";
         }
     </script>

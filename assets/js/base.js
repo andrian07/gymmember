@@ -67,8 +67,8 @@ var loader = document.getElementById('loader');
 if (Finapp.PWA.enable) {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('__service-worker.js')
-            .then(reg => console.log('service worker registered'))
-            .catch(err => console.log('service worker not registered - there is an error.', err));
+        .then(reg => console.log('service worker registered'))
+        .catch(err => console.log('service worker not registered - there is an error.', err));
     }
 }
 //-----------------------------------------------------------------------
@@ -443,43 +443,39 @@ function AddtoHome(time, once) {
     if (once) {
         var AddHomeStatus = localStorage.getItem("FinappAddtoHome");
         if (AddHomeStatus === "1" || AddHomeStatus === 1) {
-            // already showed up
-        }
-        else {
-            localStorage.setItem("FinappAddtoHome", 1)
-            window.addEventListener('load', () => {
-                if (navigator.standalone) {
-                    // if app installed ios home screen
-                }
-                else if (matchMedia('(display-mode: standalone)').matches) {
-                    // if app installed android home screen
-                }
-                else {
-                    // if app is not installed
-                    if (androidDetection) {
-                        setTimeout(() => {
-                            androidAddtoHome()
-                        }, time);
-                    }
-                    if (iosDetection) {
-                        setTimeout(() => {
-                            iosAddtoHome()
-                        }, time);
-                    }
-                }
-            });
-        }
-    }
-    else {
-        window.addEventListener('load', () => {
+           window.addEventListener('load', () => {
             if (navigator.standalone) {
-                // app loaded to ios
+                    // if app installed ios home screen
             }
             else if (matchMedia('(display-mode: standalone)').matches) {
-                // app loaded to android
+                    // if app installed android home screen
             }
             else {
-                // app not loaded
+                    // if app is not installed
+                if (androidDetection) {
+                    setTimeout(() => {
+                        androidAddtoHome()
+                    }, time);
+                }
+                if (iosDetection) {
+                    setTimeout(() => {
+                        iosAddtoHome()
+                    }, time);
+                }
+            }
+        });
+       }
+       else {
+        localStorage.setItem("FinappAddtoHome", 1)
+        window.addEventListener('load', () => {
+            if (navigator.standalone) {
+                    // if app installed ios home screen
+            }
+            else if (matchMedia('(display-mode: standalone)').matches) {
+                    // if app installed android home screen
+            }
+            else {
+                    // if app is not installed
                 if (androidDetection) {
                     setTimeout(() => {
                         androidAddtoHome()
@@ -493,6 +489,30 @@ function AddtoHome(time, once) {
             }
         });
     }
+}
+else {
+    window.addEventListener('load', () => {
+        if (navigator.standalone) {
+                // app loaded to ios
+        }
+        else if (matchMedia('(display-mode: standalone)').matches) {
+                // app loaded to android
+        }
+        else {
+                // app not loaded
+            if (androidDetection) {
+                setTimeout(() => {
+                    androidAddtoHome()
+                }, time);
+            }
+            if (iosDetection) {
+                setTimeout(() => {
+                    iosAddtoHome()
+                }, time);
+            }
+        }
+    });
+}
 
 }
 //-----------------------------------------------------------------------
@@ -527,72 +547,72 @@ if (Finapp.Dark_Mode.auto_detect.enable)
         pageBody.classList.add("dark-mode");
     }
 
-function switchDarkModeCheck(value) {
-    switchDarkMode.forEach(function (el) {
-        el.checked = value
-    })
-}
+    function switchDarkModeCheck(value) {
+        switchDarkMode.forEach(function (el) {
+            el.checked = value
+        })
+    }
 // if dark mode on
-if (checkDarkModeStatus === 1 || checkDarkModeStatus === "1" || pageBody.classList.contains('dark-mode')) {
-    switchDarkModeCheck(true);
-    if (pageBodyActive) {
+    if (checkDarkModeStatus === 1 || checkDarkModeStatus === "1" || pageBody.classList.contains('dark-mode')) {
+        switchDarkModeCheck(true);
+        if (pageBodyActive) {
         // dark mode already activated
-    }
-    else {
-        pageBody.classList.add("dark-mode")
-    }
-}
-else {
-    switchDarkModeCheck(false);
-}
-switchDarkMode.forEach(function (el) {
-    el.addEventListener("click", function () {
-        var darkmodeCheck = localStorage.getItem("FinappDarkmode");
-        var bodyCheck = pageBody.classList.contains('dark-mode');
-        if (darkmodeCheck === 1 || darkmodeCheck === "1" || bodyCheck) {
-            pageBody.classList.remove("dark-mode");
-            localStorage.setItem("FinappDarkmode", "0");
-            switchDarkModeCheck(false);
         }
         else {
             pageBody.classList.add("dark-mode")
-            switchDarkModeCheck(true);
-            localStorage.setItem("FinappDarkmode", "1");
         }
+    }
+    else {
+        switchDarkModeCheck(false);
+    }
+    switchDarkMode.forEach(function (el) {
+        el.addEventListener("click", function () {
+            var darkmodeCheck = localStorage.getItem("FinappDarkmode");
+            var bodyCheck = pageBody.classList.contains('dark-mode');
+            if (darkmodeCheck === 1 || darkmodeCheck === "1" || bodyCheck) {
+                pageBody.classList.remove("dark-mode");
+                localStorage.setItem("FinappDarkmode", "0");
+                switchDarkModeCheck(false);
+            }
+            else {
+                pageBody.classList.add("dark-mode")
+                switchDarkModeCheck(true);
+                localStorage.setItem("FinappDarkmode", "1");
+            }
+        })
     })
-})
 //-----------------------------------------------------------------------
 
 
 //-----------------------------------------------------------------------
 // Cookies Box
-if (document.querySelector(".offcanvas") === null) {
+    if (document.querySelector(".offcanvas") === null) {
     // Doesn't exist.
-}
-else {
-    var elCookiesBox = new bootstrap.Offcanvas(document.getElementById('cookiesbox'));
-    var CookiesStatus = localStorage.getItem("FinappCookiesStatus")
-    function CookiesBox(time) {
-        if (CookiesStatus === "1" || CookiesStatus === 1) {
+    }
+    else {
+        var elCookiesBox = new bootstrap.Offcanvas(document.getElementById('cookiesbox'));
+        var CookiesStatus = localStorage.getItem("FinappCookiesStatus")
+        function CookiesBox(time) {
+            if (CookiesStatus === "1" || CookiesStatus === 1) {
             // Cookies already accepted.
-        }
-        else {
-            if (time) {
-                setTimeout(() => {
-                    elCookiesBox.toggle();
-                }, time);
             }
             else {
-                elCookiesBox.toggle();
+                if (time) {
+                    setTimeout(() => {
+                        elCookiesBox.toggle();
+                    }, time);
+                }
+                else {
+                    elCookiesBox.toggle();
+                }
             }
         }
-    }
-    document.querySelectorAll(".accept-cookies").forEach(function (el) {
-        el.addEventListener("click", function () {
-            localStorage.setItem("FinappCookiesStatus", "1")
+        document.querySelectorAll(".accept-cookies").forEach(function (el) {
+            el.addEventListener("click", function () {
+                localStorage.setItem("FinappCookiesStatus", "1")
+            })
         })
-    })
-}
+    }
 
 
 //-----------------------------------------------------------------------
@@ -600,88 +620,88 @@ else {
 
 //-----------------------------------------------------------------------
 // Test Mode
-function testMode() {
-    var colorDanger = "color: #FF396F; font-weight:bold;"
-    var colorSuccess = "color: #1DCC70; font-weight:bold;"
+    function testMode() {
+        var colorDanger = "color: #FF396F; font-weight:bold;"
+        var colorSuccess = "color: #1DCC70; font-weight:bold;"
 
-    console.clear();
-    console.log("%cFINAPP", "font-size: 1.3em; font-weight: bold; color: #FFF; background-color: #6236FF; padding: 10px 120px; margin-bottom: 16px;")
-    console.log("%c🚀 TEST MODE ACTIVATED ..!", "font-size: 1em; font-weight: bold; margin: 4px 0;");
+        console.clear();
+        console.log("%cFINAPP", "font-size: 1.3em; font-weight: bold; color: #FFF; background-color: #6236FF; padding: 10px 120px; margin-bottom: 16px;")
+        console.log("%c🚀 TEST MODE ACTIVATED ..!", "font-size: 1em; font-weight: bold; margin: 4px 0;");
 
-    function testModeMsg(value, msg) {
-        if (value) {
-            console.log("%c|" + "%c " + msg + " : " + "%cEnabled", "color: #444; font-size :1.2em; font-weight: bold;", "color: inherit", colorSuccess);
+        function testModeMsg(value, msg) {
+            if (value) {
+                console.log("%c|" + "%c " + msg + " : " + "%cEnabled", "color: #444; font-size :1.2em; font-weight: bold;", "color: inherit", colorSuccess);
+            }
+            else if (value == false) {
+                console.log("%c|" + "%c " + msg + " : " + "%cDisabled", "color: #444; font-size :1.2em; font-weight: bold;", "color: inherit", colorDanger);
+            }
         }
-        else if (value == false) {
-            console.log("%c|" + "%c " + msg + " : " + "%cDisabled", "color: #444; font-size :1.2em; font-weight: bold;", "color: inherit", colorDanger);
+        function testModeInfo(value, msg) {
+            console.log("%c|" + "%c " + msg + " : " + "%c" + value, "color: #444; font-size :1.2em; font-weight: bold;", "color: inherit", "color:#6236FF; font-weight: bold;");
         }
-    }
-    function testModeInfo(value, msg) {
-        console.log("%c|" + "%c " + msg + " : " + "%c" + value, "color: #444; font-size :1.2em; font-weight: bold;", "color: inherit", "color:#6236FF; font-weight: bold;");
-    }
-    function testModeSubtitle(msg) {
-        console.log("%c # " + msg, "color: #FFF; background: #444; font-size: 1.2em; padding: 8px 16px; margin-top: 16px; border-radius: 12px 12px 0 0");
-    }
+        function testModeSubtitle(msg) {
+            console.log("%c # " + msg, "color: #FFF; background: #444; font-size: 1.2em; padding: 8px 16px; margin-top: 16px; border-radius: 12px 12px 0 0");
+        }
 
-    testModeSubtitle("THEME SETTINGS")
-    testModeMsg(Finapp.PWA.enable, "PWA")
-    testModeMsg(Finapp.Dark_Mode.default, "Set dark mode as default theme")
-    testModeMsg(Finapp.Dark_Mode.local_mode.enable, "Local dark mode (between " + Finapp.Dark_Mode.local_mode.start_time + ":00 and " + Finapp.Dark_Mode.local_mode.end_time + ":00)")
-    testModeMsg(Finapp.Dark_Mode.auto_detect.enable, "Auto detect dark mode")
-    testModeMsg(Finapp.RTL.enable, "RTL")
-    testModeMsg(Finapp.Test.enable, "Test mode")
-    testModeMsg(Finapp.Test.alert, "Test mode alert")
+        testModeSubtitle("THEME SETTINGS")
+        testModeMsg(Finapp.PWA.enable, "PWA")
+        testModeMsg(Finapp.Dark_Mode.default, "Set dark mode as default theme")
+        testModeMsg(Finapp.Dark_Mode.local_mode.enable, "Local dark mode (between " + Finapp.Dark_Mode.local_mode.start_time + ":00 and " + Finapp.Dark_Mode.local_mode.end_time + ":00)")
+        testModeMsg(Finapp.Dark_Mode.auto_detect.enable, "Auto detect dark mode")
+        testModeMsg(Finapp.RTL.enable, "RTL")
+        testModeMsg(Finapp.Test.enable, "Test mode")
+        testModeMsg(Finapp.Test.alert, "Test mode alert")
 
-    testModeSubtitle("PREVIEW INFOS")
+        testModeSubtitle("PREVIEW INFOS")
     // Resolution
-    testModeInfo(window.screen.availWidth + " x " + window.screen.availHeight, "Resolution")
+        testModeInfo(window.screen.availWidth + " x " + window.screen.availHeight, "Resolution")
     // Device
-    if (iosDetection) {
-        testModeInfo("iOS", "Device")
-    }
-    else if (androidDetection) {
-        testModeInfo("Android", "Device")
-    }
-    else if (windowsPhoneDetection) {
-        testModeInfo("Windows Phone", "Device")
-    }
-    else {
-        testModeInfo("Not a Mobile Device", "Device")
-    }
-    //Language
-    testModeInfo(window.navigator.language, "Language")
-    // Theme
-    if (pageBody.classList.contains("dark-mode")) {
-        testModeInfo("Dark Mode", "Current theme")
-    }
-    else {
-        testModeInfo("Light Mode", "Current theme")
-    }
-    // Online Status
-    if (window.navigator.onLine) {
-        testModeInfo("Online", "Internet connection")
-    }
-    else {
-        testModeInfo("Offline", "Internet connection")
-    }
-
-    testModeSubtitle("ANIMATIONS")
-    testModeMsg(Finapp.Animation.goBack, "Go Back")
-}
-function themeTesting() {
-    var word = Finapp.Test.word;
-    var value = "";
-    window.addEventListener('keypress', function (e) {
-        value = value + String.fromCharCode(e.keyCode).toLowerCase();
-        if (value.length > word.length) {
-            value = value.slice(1);
+        if (iosDetection) {
+            testModeInfo("iOS", "Device")
         }
-        if (value == word || value === word) {
-            value = ""
-            if (Finapp.Test.alert) {
-                var content = document.getElementById("appCapsule")
-                content.appendChild(document.createElement("div")).className = "test-alert-wrapper";
-                var alert =
+        else if (androidDetection) {
+            testModeInfo("Android", "Device")
+        }
+        else if (windowsPhoneDetection) {
+            testModeInfo("Windows Phone", "Device")
+        }
+        else {
+            testModeInfo("Not a Mobile Device", "Device")
+        }
+    //Language
+        testModeInfo(window.navigator.language, "Language")
+    // Theme
+        if (pageBody.classList.contains("dark-mode")) {
+            testModeInfo("Dark Mode", "Current theme")
+        }
+        else {
+            testModeInfo("Light Mode", "Current theme")
+        }
+    // Online Status
+        if (window.navigator.onLine) {
+            testModeInfo("Online", "Internet connection")
+        }
+        else {
+            testModeInfo("Offline", "Internet connection")
+        }
+
+        testModeSubtitle("ANIMATIONS")
+        testModeMsg(Finapp.Animation.goBack, "Go Back")
+    }
+    function themeTesting() {
+        var word = Finapp.Test.word;
+        var value = "";
+        window.addEventListener('keypress', function (e) {
+            value = value + String.fromCharCode(e.keyCode).toLowerCase();
+            if (value.length > word.length) {
+                value = value.slice(1);
+            }
+            if (value == word || value === word) {
+                value = ""
+                if (Finapp.Test.alert) {
+                    var content = document.getElementById("appCapsule")
+                    content.appendChild(document.createElement("div")).className = "test-alert-wrapper";
+                    var alert =
                     "<div id='alert-toast' class='toast-box toast-center tap-to-close'>"
                     +
                     "<div class='in'>"
@@ -691,20 +711,20 @@ function themeTesting() {
                     Finapp.Test.alertMessage
                     +
                     "</strong></div></div></div>"
-                var wrapper = document.querySelector(".test-alert-wrapper")
-                wrapper.innerHTML = alert;
-                toastbox('alert-toast');
-                setTimeout(() => {
-                    this.document.getElementById("alert-toast").classList.remove("show")
-                }, 4000);
+                    var wrapper = document.querySelector(".test-alert-wrapper")
+                    wrapper.innerHTML = alert;
+                    toastbox('alert-toast');
+                    setTimeout(() => {
+                        this.document.getElementById("alert-toast").classList.remove("show")
+                    }, 4000);
+                }
+                testMode();
             }
-            testMode();
-        }
 
-    })
-}
+        })
+    }
 
-if (Finapp.Test.enable) {
-    themeTesting();
-}
+    if (Finapp.Test.enable) {
+        themeTesting();
+    }
 //-----------------------------------------------------------------------

@@ -50,6 +50,17 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                 <a href="app-cards.html" class="link">View All</a>
             </div>
 
+            <a href="<?php echo base_url();?>User/setting">
+                <div id="toast-3" class="toast-box toast-top show">
+                    <div class="in">
+                        <ion-icon name="people-outline" class="text-info md hydrated" role="img"></ion-icon>
+                        <div class="text">
+                            Data Anda Belum Lengkap Silahakn Lengkapi Dahulu
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-text-danger close-button">Open</button>
+                </div>
+            </a>
             <!-- carousel single -->
             <div class="carousel-single splide">
                 <div class="splide__track">
@@ -58,7 +69,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                         <li class="splide__slide">
                             <!-- card block -->
                             <div class="card-main">
-                                <img src="<?php echo base_url(); ?>assets/img/promo1.png" style="width:100%; border-radius:5% ;">
+                                <img src="<?php echo base_url(); ?>assets/img/banner/f02df848-5033-49bd-9fab-bd3701bba8a4.webp" style="width:100%; border-radius:5% ;">
                             </div>
                             <!-- * card block -->
                         </li>
@@ -66,7 +77,15 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                         <li class="splide__slide">
                             <!-- card block -->
                             <div class="card-main">
-                                <img src="<?php echo base_url(); ?>assets/img/promo2.png" style="width:100%; border-radius:5% ;">
+                                <img src="<?php echo base_url(); ?>assets/img/banner/abb349f2-c4dc-4d6a-a7e1-8358c802a947.webp" style="width:100%; border-radius:5% ;">
+                            </div>
+                            <!-- * card block -->
+                        </li>
+
+                        <li class="splide__slide">
+                            <!-- card block -->
+                            <div class="card-main">
+                                <img src="<?php echo base_url(); ?>assets/img/banner/900548a9-5ca1-4dbb-ae28-2198717b3eb4.webp" style="width:100%; border-radius:5% ;">
                             </div>
                             <!-- * card block -->
                         </li>
@@ -80,347 +99,136 @@ require DOC_ROOT_PATH . $this->config->item('header1');
         </div>
         <!-- Wallet Card -->
 
-        <!-- Deposit Action Sheet -->
-        <div class="modal fade action-sheet" id="depositActionSheet" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Add Balance</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="action-sheet-content">
-                            <form>
-                                <div class="form-group basic">
-                                    <div class="input-wrapper">
-                                        <label class="label" for="account1">From</label>
-                                        <select class="form-control custom-select" id="account1">
-                                            <option value="0">Savings (*** 5019)</option>
-                                            <option value="1">Investment (*** 6212)</option>
-                                            <option value="2">Mortgage (*** 5021)</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <label class="label">Enter Amount</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text" id="basic-addona1">$</span>
-                                        <input type="text" class="form-control" placeholder="Enter an amount"
-                                        value="100">
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group basic">
-                                    <button type="button" class="btn btn-primary btn-block btn-lg"
-                                    data-bs-dismiss="modal">Deposit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- * Deposit Action Sheet -->
-
-        <!-- Top Up Action Sheet -->
-        <div class="modal fade action-sheet" id="topUp" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Top Up</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="action-sheet-content">
-                            <form>
-                                <div class="form-group basic">
-                                    <div class="input-wrapper">
-                                        <label class="label" for="account2d">Nominal</label>
-                                        <select class="form-control custom-select" id="account2d">
-                                            <option value="20.000">Rp. 20.000</option>
-                                            <option value="50.000">Rp. 50.000</option>
-                                            <option value="100.000">Rp. 100.000</option>
-                                            <option value="150.000">Rp. 150.000</option>
-                                            <option value="200.000">Rp. 200.000</option>
-                                            <option value="250.000">Rp. 250.000</option>
-                                            <option value="300.000">Rp. 300.000</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <button type="button" class="btn btn-primary btn-block btn-lg"
-                                    data-bs-dismiss="modal">Top Up</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- * Withdraw Action Sheet -->
-
-        <!-- Send Action Sheet -->
-        <div class="modal fade action-sheet" id="sendActionSheet" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Send Balance</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="action-sheet-content">
-                            <form>
-
-                                <div class="form-group basic">
-                                    <div class="input-wrapper">
-                                        <label class="label" for="text11">To</label>
-                                        <input type="email" class="form-control" id="text11"
-                                        placeholder="Enter User ID">
-                                        <i class="clear-input">
-                                            <ion-icon name="close-circle"></ion-icon>
-                                        </i>
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <label class="label">Enter Amount</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text" id="basic-addon1">Rp</span>
-                                        <input type="text" class="form-control" placeholder="Enter an amount"
-                                        value="0">
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <button type="button" class="btn btn-primary btn-block btn-lg"
-                                    data-bs-dismiss="modal">Send</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- * Send Action Sheet -->
-
-        <!-- Exchange Action Sheet -->
-        <div class="modal fade action-sheet" id="exchangeActionSheet" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Booking</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="action-sheet-content">
-                            <form>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group basic">
-                                            <select class="form-control custom-select" id="account2d">
-                                                <option value="reguler">PS 4 / Reguler</option>
-                                                <option value="nosmoking">PS 4 / No Smooking</option>
-                                                <option value="100.000">Vip ps 5</option>
-                                                <option value="150.000">VVIP</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group basic">
-                                            <div class="input-wrapper">
-                                                <label class="label" for="currency1">Tanggal</label>
-                                                <input type="date" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group basic">
-                                            <div class="input-wrapper">
-                                                <label class="label" for="currency2">Jam</label>
-                                                <input type="time" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group basic">
-                                            <div class="input-wrapper">
-                                                <label class="label" for="currency1">Durasi</label>
-                                                <select class="form-control custom-select" id="account2d">
-                                                    <option value="1">1 Jam</option>
-                                                    <option value="2">2 Jam</option>
-                                                    <option value="3">3 Jam</option>
-                                                    <option value="4">4 Jam</option>
-                                                    <option value="5">5 Jam</option>
-                                                    <option value="6">6 Jam</option>
-                                                    <option value="7">7 Jam</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="form-group basic">
-                                    <button type="button" class="btn btn-primary btn-block btn-lg"
-                                    data-bs-dismiss="modal">Book</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- * Exchange Action Sheet -->
-
-        <!-- Stats -->
-        <div class="section">
-            <div class="row mt-2">
-                <div class="col-6">
-                    <div class="stat-box">
-                        <div class="title">Point</div>
-                        <div class="value text-success">10</div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="stat-box">
-                        <div class="title">MMR</div>
-                        <div class="value text-danger">1.500</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-6">
-                    <div class="stat-box">
-                        <div class="title">Time Remaining</div>
-                        <div class="value">30:20</div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="stat-box">
-                        <div class="title">....</div>
-                        <div class="value">....</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- * Stats -->
 
 
         <!-- Monthly Bills -->
         <div class="section full mt-4">
             <div class="section-heading padding">
-                <h2 class="title">Tukar Point</h2>
+                <h2 class="title">Today's Classes</h2>
                 <a href="app-bills.html" class="link">View All</a>
             </div>
             <!-- carousel multiple -->
-            <div class="carousel-multiple splide">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <li class="splide__slide">
-                            <div class="bill-box">
-                                <div class="img-wrapper">
-                                    <img src="assets/img/sample/brand/free.png" alt="img" class="image-block imaged w120">
+            <div class="carousel-multiple splide splide--loop splide--ltr splide--draggable is-active" id="splide03" style="visibility: visible;">
+                <div class="splide__track" id="splide03-track" style="padding-left: 16px; padding-right: 16px;">
+                    <ul class="splide__list" id="splide03-list" style="transform: translateX(-987px);">
+
+                        <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title 1</h5>
+                                    <p class="card-text">
+                                        Some quick example text to build on the card title.
+                                    </p>
                                 </div>
-                                <div class="price">10 Point</div>
-                                <p style="font-size: 16px; color: #ffffff;">1 Jam PS4</p>
-                                <a href="#" class="btn btn-primary btn-block btn-sm">Tukar</a>
+                            </div>
+                        </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title 2</h5>
+                                    <p class="card-text">
+                                        Some quick example text to build on the card title.
+                                    </p>
+                                </div>
+                            </div>
+                        </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title 3</h5>
+                                    <p class="card-text">
+                                        Some quick example text to build on the card title.
+                                    </p>
+                                </div>
+                            </div>
+                        </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title 4</h5>
+                                    <p class="card-text">
+                                        Some quick example text to build on the card title.
+                                    </p>
+                                </div>
+                            </div>
+                        </li><li class="splide__slide" id="splide03-slide01" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title 1</h5>
+                                    <p class="card-text">
+                                        Some quick example text to build on the card title.
+                                    </p>
+                                </div>
                             </div>
                         </li>
 
-                        <li class="splide__slide">
-                            <div class="bill-box">
-                                <div class="img-wrapper">
-                                    <img src="assets/img/sample/brand/free.png" alt="img" class="image-block imaged w120">
+                        <li class="splide__slide is-visible is-active" id="splide03-slide02" style="margin-right: 16px; width: 191px;" aria-hidden="false" tabindex="0">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title 2</h5>
+                                    <p class="card-text">
+                                        Some quick example text to build on the card title.
+                                    </p>
                                 </div>
-                                <div class="price">15 Point</div>
-                                <p style="font-size: 16px; color: #ffffff;">1 Jam PS5</p>
-                                <a href="#" class="btn btn-primary btn-block btn-sm">Tukar</a>
                             </div>
                         </li>
 
-                        <li class="splide__slide">
-                            <div class="bill-box">
-                                <div class="img-wrapper">
-                                    <img src="assets/img/sample/brand/free.png" alt="img" class="image-block imaged w120">
+                        <li class="splide__slide is-visible" id="splide03-slide03" style="margin-right: 16px; width: 191px;" aria-hidden="false" tabindex="0">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title 3</h5>
+                                    <p class="card-text">
+                                        Some quick example text to build on the card title.
+                                    </p>
                                 </div>
-                                <div class="price">20 Point</div>
-                                <p style="font-size: 16px; color: #ffffff;">1 Jam VIP</p>
-                                <a href="#" class="btn btn-primary btn-block btn-sm">Tukar</a>
                             </div>
                         </li>
 
-                        <li class="splide__slide">
-                            <div class="bill-box">
-                                <div class="img-wrapper">
-                                    <img src="assets/img/sample/brand/2.png" alt="img" class="image-block imaged w120">
+                        <li class="splide__slide" id="splide03-slide04" style="margin-right: 16px; width: 191px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title 4</h5>
+                                    <p class="card-text">
+                                        Some quick example text to build on the card title.
+                                    </p>
                                 </div>
-                                <div class="price">25 Point</div>
-                                <p style="font-size: 16px; color: #ffffff;">Merchendise</p>
-                                <a href="#" class="btn btn-primary btn-block btn-sm">Tukar</a>
                             </div>
                         </li>
 
-                        <li class="splide__slide">
-                            <div class="bill-box">
-                                <div class="img-wrapper">
-                                    <img src="assets/img/sample/brand/3.png" alt="img" class="image-block imaged w120">
+                    <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title 1</h5>
+                                    <p class="card-text">
+                                        Some quick example text to build on the card title.
+                                    </p>
                                 </div>
-                                <div class="price">20 Point</div>
-                                <p style="font-size: 16px; color: #ffffff;">Merchendise</p>
-                                <a href="#" class="btn btn-primary btn-block btn-sm">Tukar</a>
                             </div>
-                        </li>
-
-                        <li class="splide__slide">
-                            <div class="bill-box">
-                                <div class="img-wrapper">
-                                    <img src="assets/img/sample/brand/4.png" alt="img" class="image-block imaged w120">
+                        </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title 2</h5>
+                                    <p class="card-text">
+                                        Some quick example text to build on the card title.
+                                    </p>
                                 </div>
-                                <div class="price">20 Point</div>
-                                <p style="font-size: 16px; color: #ffffff;">Merchendise</p>
-                                <a href="#" class="btn btn-primary btn-block btn-sm">Tukar</a>
                             </div>
-                        </li>
-
-                        <li class="splide__slide">
-                            <div class="bill-box">
-                                <div class="img-wrapper">
-                                    <img src="assets/img/sample/brand/5.png" alt="img" class="image-block imaged w120">
+                        </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title 3</h5>
+                                    <p class="card-text">
+                                        Some quick example text to build on the card title.
+                                    </p>
                                 </div>
-                                <div class="price">20 Point</div>
-                                <p style="font-size: 16px; color: #ffffff;">Merchendise</p>
-                                <a href="#" class="btn btn-primary btn-block btn-sm">Tukar</a>
                             </div>
-                        </li>
-
-                        <li class="splide__slide">
-                            <div class="bill-box">
-                                <div class="img-wrapper">
-                                    <img src="assets/img/sample/brand/6.png" alt="img" class="image-block imaged w120">
+                        </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title 4</h5>
+                                    <p class="card-text">
+                                        Some quick example text to build on the card title.
+                                    </p>
                                 </div>
-                                <div class="price">20 Point</div>
-                                <p style="font-size: 16px; color: #ffffff;">Merchendise</p>
-                                <a href="#" class="btn btn-primary btn-block btn-sm">Tukar</a>
                             </div>
-                        </li>
-
-                        <li class="splide__slide">
-                            <div class="bill-box">
-                                <div class="img-wrapper">
-                                    <img src="assets/img/sample/brand/7.png" alt="img" class="image-block imaged w120">
-                                </div>
-                                <div class="price">20 Point</div>
-                                <p style="font-size: 16px; color: #ffffff;">Merchendise</p>
-                                <a href="#" class="btn btn-primary btn-block btn-sm">Tukar</a>
-                            </div>
-                        </li>
-
-                    </ul>
+                        </li></ul>
                 </div>
             </div>
             <!-- * carousel multiple -->
@@ -430,288 +238,113 @@ require DOC_ROOT_PATH . $this->config->item('header1');
         <!-- Transactions -->
         <div class="section mt-4">
             <div class="section-heading">
-                <h2 class="title">Transactions</h2>
+                <h2 class="title">Personal Trainer</h2>
                 <a href="app-transactions.html" class="link">View All</a>
             </div>
-            <div class="transactions">
+            <div class="carousel-multiple splide splide--loop splide--ltr splide--draggable is-active" id="splide03" style="visibility: visible;">
+                <div class="splide__track" id="splide03-track" style="padding-left: 16px; padding-right: 16px;">
+                    <ul class="splide__list" id="splide03-list" style="transform: translateX(-1385px);">
 
-                <!-- item -->
-                <a href="app-transaction-detail.html" class="item">
-                    <div class="detail">
-                        <div>
-                            <strong>INV/9/0000001065</strong>
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div class="price text-danger"> - 15.000</div>
-                    </div>
-                </a>
-                <!-- * item -->
-                <!-- item -->
-                <a href="app-transaction-detail.html" class="item">
-                    <div class="detail">
-                        <div>
-                            <strong>INV/9/0000001064</strong>
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div class="price text-danger"> - 25.000</div>
-                    </div>
-                </a>
-                <!-- * item -->
-                <!-- item -->
-                <a href="app-transaction-detail.html" class="item">
-                    <div class="detail">
-                        <div>
-                            <strong>INV/9/0000001063</strong>
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div class="price text-danger"> - 11.000</div>
-                    </div>
-                </a>
-                <!-- * item -->
-                <!-- item -->
-                <a href="app-transaction-detail.html" class="item">
-                    <div class="detail">
-                        <div>
-                            <strong>Deposit</strong>
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div class="price text-success"> + 500.000</div>
-                    </div>
-                </a>
-                <!-- * item -->
+                        <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
+                            <div class="card" style="background:none;box-shadow: none;">
+                                <div class="card-body">
+                                    <p>
+                                        <img src="https://thewebmax.org/zymmy/images/team/pic1.jpg" alt="image" class="imaged w120 rounded">
+                                    </p>
+                                    <h5 class="card-title" style="text-align:center;">Edith J. Shuster</h5>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
+                            <div class="card" style="background:none;box-shadow: none;">
+                                <div class="card-body">
+                                    <p>
+                                        <img src="https://thewebmax.org/zymmy/images/team/pic2.jpg" alt="image" class="imaged w120 rounded">
+                                    </p>
+                                    <h5 class="card-title" style="text-align:center;">Terry Jackson</h5>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
+                            <div class="card" style="background:none;box-shadow: none;">
+                                <div class="card-body">
+                                    <p>
+                                        <img src="https://thewebmax.org/zymmy/images/team/pic3.jpg" alt="image" class="imaged w120 rounded">
+                                    </p>
+                                    <h5 class="card-title" style="text-align:center;">John L. Diaz</h5>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
+                            <div class="card" style="background:none;box-shadow: none;">
+                                <div class="card-body">
+                                    <p>
+                                        <img src="https://thewebmax.org/zymmy/images/team/pic3.jpg" alt="image" class="imaged w120 rounded">
+                                    </p>
+                                    <h5 class="card-title" style="text-align:center;">Gabriel Wood</h5>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- * Transactions -->
 
-        <!-- my cards -->
-        <div class="section full mt-4">
-            <div class="section-heading padding">
-                <h2 class="title">Promo</h2>
-                <a href="app-cards.html" class="link">View All</a>
-            </div>
 
-            <!-- carousel single -->
-            <div class="carousel-single splide">
-                <div class="splide__track">
-                    <ul class="splide__list">
-
-                        <li class="splide__slide">
-                            <!-- card block -->
-                            <div class="card-block bg-primary">
-                                <div class="card-main">
-                                    <div class="card-button dropdown">
-                                        <button type="button" class="btn btn-link btn-icon" data-bs-toggle="dropdown">
-                                            <ion-icon name="ellipsis-horizontal"></ion-icon>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">
-                                                <ion-icon name="pencil-outline"></ion-icon>Edit
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <ion-icon name="close-outline"></ion-icon>Remove
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <ion-icon name="arrow-up-circle-outline"></ion-icon>Upgrade
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="balance">
-                                        <span class="label">Saldo</span>
-                                        <h1 class="title">100.000</h1>
-                                    </div>
-                                    <div class="in">
-                                        <div class="card-number">
-                                            <span class="label">Card Number</span>
-                                            •••• 9905
-                                        </div>
-                                        <div class="bottom">
-                                            <div class="card-expiry">
-                                                <span class="label">Expiry</span>
-                                                12 / 25
-                                            </div>
-                                            <div class="card-ccv">
-                                                <span class="label">CCV</span>
-                                                553
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+        <!-- Transactions -->
+        <div class="section mt-4">
+            <div class="section-heading">
+                <h2 class="title">Trending Today's</h2>
+                <a href="app-transactions.html" class="link">View All</a>
+            </div><ul class="listview image-listview media">
+                <li>
+                    <a href="#" class="item">
+                        <div class="imageWrapper">
+                            <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w64">
+                        </div>
+                        <div class="in">
+                            <div>
+                                Sonic Yoga
+                                <div class="text-muted">subtext</div>
                             </div>
-                            <!-- * card block -->
-                        </li>
-
-                        <li class="splide__slide">
-                            <!-- card block -->
-                            <div class="card-block bg-dark">
-                                <div class="card-main">
-                                    <div class="card-button dropdown">
-                                        <button type="button" class="btn btn-link btn-icon" data-bs-toggle="dropdown">
-                                            <ion-icon name="ellipsis-horizontal"></ion-icon>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">
-                                                <ion-icon name="pencil-outline"></ion-icon>Edit
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <ion-icon name="close-outline"></ion-icon>Remove
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <ion-icon name="arrow-up-circle-outline"></ion-icon>Upgrade
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="balance">
-                                        <span class="label">BALANCE</span>
-                                        <h1 class="title">$ 1,256,90</h1>
-                                    </div>
-                                    <div class="in">
-                                        <div class="card-number">
-                                            <span class="label">Card Number</span>
-                                            •••• 9905
-                                        </div>
-                                        <div class="bottom">
-                                            <div class="card-expiry">
-                                                <span class="label">Expiry</span>
-                                                12 / 25
-                                            </div>
-                                            <div class="card-ccv">
-                                                <span class="label">CCV</span>
-                                                553
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="item">
+                        <div class="imageWrapper">
+                            <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w64">
+                        </div>
+                        <div class="in">
+                            <div>
+                                21 Pilates
+                                <div class="text-muted">subtext</div>
                             </div>
-                            <!-- * card block -->
-                        </li>
-
-                        <li class="splide__slide">
-                            <!-- card block -->
-                            <div class="card-block bg-secondary">
-                                <div class="card-main">
-                                    <div class="card-button dropdown">
-                                        <button type="button" class="btn btn-link btn-icon" data-bs-toggle="dropdown">
-                                            <ion-icon name="ellipsis-horizontal"></ion-icon>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">
-                                                <ion-icon name="pencil-outline"></ion-icon>Edit
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <ion-icon name="close-outline"></ion-icon>Remove
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <ion-icon name="arrow-up-circle-outline"></ion-icon>Upgrade
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="balance">
-                                        <span class="label">BALANCE</span>
-                                        <h1 class="title">$ 1,256,90</h1>
-                                    </div>
-                                    <div class="in">
-                                        <div class="card-number">
-                                            <span class="label">Card Number</span>
-                                            •••• 9905
-                                        </div>
-                                        <div class="bottom">
-                                            <div class="card-expiry">
-                                                <span class="label">Expiry</span>
-                                                12 / 25
-                                            </div>
-                                            <div class="card-ccv">
-                                                <span class="label">CCV</span>
-                                                553
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="item">
+                        <div class="imageWrapper">
+                            <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w64">
+                        </div>
+                        <div class="in">
+                            <div>
+                                Striking Class
+                                <div class="text-muted">subtext</div>
                             </div>
-                            <!-- * card block -->
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <!-- * carousel single -->
-
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <!-- * my cards -->
-
-
-        <!-- News -->
-        <div class="section full mt-4 mb-3">
-            <div class="section-heading padding">
-                <h2 class="title">Lastest News</h2>
-                <a href="app-blog.html" class="link">View All</a>
-            </div>
-
-            <!-- carousel multiple -->
-            <div class="carousel-multiple splide">
-                <div class="splide__track">
-                    <ul class="splide__list">
-
-                        <li class="splide__slide">
-                            <a href="app-blog-post.html">
-                                <div class="blog-card">
-                                    <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w-100">
-                                    <div class="text">
-                                        <h4 class="title">What will be the value of bitcoin in the next...</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="splide__slide">
-                            <a href="app-blog-post.html">
-                                <div class="blog-card">
-                                    <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w-100">
-                                    <div class="text">
-                                        <h4 class="title">Rules you need to know in business</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="splide__slide">
-                            <a href="app-blog-post.html">
-                                <div class="blog-card">
-                                    <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w-100">
-                                    <div class="text">
-                                        <h4 class="title">10 easy ways to save your money</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="splide__slide">
-                            <a href="app-blog-post.html">
-                                <div class="blog-card">
-                                    <img src="assets/img/sample/photo/4.jpg" alt="image" class="imaged w-100">
-                                    <div class="text">
-                                        <h4 class="title">Follow the financial agenda with...</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <!-- * carousel multiple -->
-
-        </div>
-        <!-- * News -->
-
+        <!-- * Transactions -->
 
         <!-- app footer -->
         <div class="appFooter">
             <div class="footer-title">
-                Game On Application
+                Elluna Application
             </div>
         </div>
         <!-- * app footer -->
@@ -722,8 +355,8 @@ require DOC_ROOT_PATH . $this->config->item('header1');
 
 <!-- App Bottom Menu -->
 <div class="appBottomMenu">
-    <a href="index.html" class="item active">
-        <div class="col">
+    <a href="<?php echo base_url(); ?>Dashboard" class="item">
+        <div class="col" >
             <ion-icon name="home-outline"></ion-icon>
             <strong>Home</strong>
         </div>
@@ -731,24 +364,24 @@ require DOC_ROOT_PATH . $this->config->item('header1');
     <a href="app-transactions.html" class="item">
         <div class="col">
             <ion-icon name="document-text-outline"></ion-icon>
-            <strong>Transaction</strong>
+            <strong>Class</strong>
         </div>
     </a>
-    <a href="app-qr-code.html" class="item">
+    <a href="<?php echo base_url(); ?>User/absence" class="item">
         <div class="col">
             <div class="action-button large">
                 <ion-icon name="qr-code-outline" role="img" class="md flip-rtl hydrated"></ion-icon>
             </div>
-            <strong>Pay</strong>
+            <strong>Absen</strong>
         </div>
     </a>
     <a href="app-cards.html" class="item">
         <div class="col">
             <ion-icon name="bar-chart-outline"></ion-icon>
-            <strong>Ranks</strong>
+            <strong>Video</strong>
         </div>
     </a>
-    <a href="app-settings.html" class="item">
+    <a href="<?php echo base_url(); ?>User/setting" class="item active">
         <div class="col">
             <ion-icon name="settings-outline"></ion-icon>
             <strong>Settings</strong>
