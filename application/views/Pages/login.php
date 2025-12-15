@@ -35,7 +35,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                         <div class="form-group basic">
                             <div class="input-wrapper">
                                 <label class="label" for="email1">No HP</label>
-                                <input type="number" class="form-control" id="member_phone" placeholder="No HP">
+                                <input type="number" class="form-control" id="name" placeholder="No HP">
                                 <i class="clear-input">
                                     <ion-icon name="close-circle"></ion-icon>
                                 </i>
@@ -45,7 +45,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                         <div class="form-group basic">
                             <div class="input-wrapper">
                                 <label class="label" for="password1">Password</label>
-                                <input type="password" class="form-control" id="member_password" placeholder="Password">
+                                <input type="password" class="form-control" id="password" placeholder="Password">
                                 <i class="clear-input">
                                     <ion-icon name="close-circle"></ion-icon>
                                 </i>
@@ -63,7 +63,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                 </div>
 
                 <div class="form-button-group  transparent">
-                    <button type="button" onclick="dashboard()" class="btn btn-primary btn-block btn-lg">Log in</button>
+                    <button type="button" id="btnlogin" class="btn btn-primary btn-block btn-lg">Log in</button>
                 </div>
 
             </form>
@@ -78,8 +78,39 @@ require DOC_ROOT_PATH . $this->config->item('header1');
 
     ?>
     <script>
-        function dashboard()
-        {
-            window.location.href = "<?php echo base_url(); ?>dashboard";
-        }
+
+        $('#btnlogin').click(function(e){
+            e.preventDefault();
+            var name          = $("#name").val();
+            var pass          = $("#password").val();
+            let csrfName      = $('meta[name=csrf-name]').attr('content');
+            let csrfHash      = $('meta[name=csrf-hash]').attr('content');
+
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>Auth/login",
+                dataType: "json",   
+                data: {
+                    [csrfName]: csrfHash,    // kirim CSRF DINAMIS
+                    name:name,
+                    pass:pass
+                },                                                               
+                success : function(data){
+                    console.log(data);
+                    if (data.result.csrf_name && data.result.csrf_hash) {
+                        $('meta[name=csrf-name]').attr('content', data.result.csrf_name);
+                        $('meta[name=csrf-hash]').attr('content', data.result.csrf_hash);
+                    }            
+                    if (data.code == "200"){
+                        window.location.href = "<?php echo base_url(); ?>Dashboard";
+                    }else {
+                      Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: data.result.result,
+                    })
+                  }
+              }
+          });
+        });
     </script>

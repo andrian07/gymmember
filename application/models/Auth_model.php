@@ -3,17 +3,28 @@
 class auth_model extends CI_Model {
 
 
-    //login
+        //login
     public function get_login_data($username, $password)
     {
-        $query = $this->db->query("select * from ms_user a, ms_role b, ms_branch c where a.user_role and b.role_id and a.user_branch = c.branch_id and user_name = '".$username."' and user_password = '".$password."' and a.is_active = 'Y'");
-        $result = $query->result();
-        return $result;
+        $this->db->select('*');
+        $this->db->from('ms_member');
+        $this->db->where('member_phone', $username);
+        $this->db->where('member_pass', $password);
+        $this->db->where('member_active', 'Y');
+        $query = $this->db->get();
+        return $query;
     }
 
     public function insert_login($insert_login)
     {
         $this->db->insert('history_login', $insert_login);
+    }
+
+    public function update_cookies($cookies_data, $username)
+    {
+        $this->db->set($cookies_data);
+        $this->db->where('member_phone', $username);
+        $this->db->update('ms_member');
     }
     //end login
 
