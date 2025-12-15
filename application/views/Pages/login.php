@@ -73,7 +73,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
     <!-- * App Capsule -->
 
     <?php 
-    require DOC_ROOT_PATH . $this->config->item('footer1');
+    require DOC_ROOT_PATH . $this->config->item('footer2');
 
 
     ?>

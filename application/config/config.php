@@ -27,6 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['base_url']    = 'http://localhost/ellunamember/';
 $config['header1'] = "ellunamember/application/views/pages/header1.php";
 $config['footer1'] = "ellunamember/application/views/pages/footer1.php";
+$config['footer2'] = "ellunamember/application/views/pages/footer2.php";
 
 /*
 |--------------------------------------------------------------------------

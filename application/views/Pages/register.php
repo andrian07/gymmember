@@ -216,7 +216,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
 <!-- * Terms Modal -->
 
 <?php 
-require DOC_ROOT_PATH . $this->config->item('footer1');
+require DOC_ROOT_PATH . $this->config->item('footer2');
 ?>
 <script>
     var canvas          = document.getElementById('signature-pad');

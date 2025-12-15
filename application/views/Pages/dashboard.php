@@ -113,12 +113,11 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                     <ul class="splide__list" id="splide03-list" style="transform: translateX(-987px);">
 
                         <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Title 1</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title.
-                                    </p>
+                            <div class="card bg-dark text-white">
+                                <img src="http://localhost/gym/assets/class/poundfit.jpg" alt="image" class="card-img overlay-img">
+                                <div class="card-img-overlay">
+                                    <h5 class="card-title">Pound Fit</h5>
+                                    <!-- <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
                                 </div>
                             </div>
                         </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
@@ -192,12 +191,12 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                             </div>
                         </li>
 
-                    <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
+                        <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Title 1</h5>
                                     <p class="card-text">
-                                        Some quick example text to build on the card title.
+                                        Some quick example text to build on the card titles.
                                     </p>
                                 </div>
                             </div>
@@ -229,127 +228,127 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                                 </div>
                             </div>
                         </li></ul>
+                    </div>
+                </div>
+                <!-- * carousel multiple -->
+            </div>
+            <!-- * Monthly Bills -->
+
+            <!-- Transactions -->
+            <div class="section mt-4">
+                <div class="section-heading">
+                    <h2 class="title">Personal Trainer</h2>
+                    <a href="app-transactions.html" class="link">View All</a>
+                </div>
+                <div class="carousel-multiple splide splide--loop splide--ltr splide--draggable is-active" id="splide03" style="visibility: visible;">
+                    <div class="splide__track" id="splide03-track" style="padding-left: 16px; padding-right: 16px;">
+                        <ul class="splide__list" id="splide03-list" style="transform: translateX(-1385px);">
+
+                            <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
+                                <div class="card" style="background:none;box-shadow: none;">
+                                    <div class="card-body">
+                                        <p>
+                                            <img src="https://thewebmax.org/zymmy/images/team/pic1.jpg" alt="image" class="imaged w120 rounded">
+                                        </p>
+                                        <h5 class="card-title" style="text-align:center;">Edith J. Shuster</h5>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
+                                <div class="card" style="background:none;box-shadow: none;">
+                                    <div class="card-body">
+                                        <p>
+                                            <img src="https://thewebmax.org/zymmy/images/team/pic2.jpg" alt="image" class="imaged w120 rounded">
+                                        </p>
+                                        <h5 class="card-title" style="text-align:center;">Terry Jackson</h5>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
+                                <div class="card" style="background:none;box-shadow: none;">
+                                    <div class="card-body">
+                                        <p>
+                                            <img src="https://thewebmax.org/zymmy/images/team/pic3.jpg" alt="image" class="imaged w120 rounded">
+                                        </p>
+                                        <h5 class="card-title" style="text-align:center;">John L. Diaz</h5>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
+                                <div class="card" style="background:none;box-shadow: none;">
+                                    <div class="card-body">
+                                        <p>
+                                            <img src="https://thewebmax.org/zymmy/images/team/pic3.jpg" alt="image" class="imaged w120 rounded">
+                                        </p>
+                                        <h5 class="card-title" style="text-align:center;">Gabriel Wood</h5>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <!-- * carousel multiple -->
-        </div>
-        <!-- * Monthly Bills -->
+            <!-- * Transactions -->
 
-        <!-- Transactions -->
-        <div class="section mt-4">
-            <div class="section-heading">
-                <h2 class="title">Personal Trainer</h2>
-                <a href="app-transactions.html" class="link">View All</a>
+
+            <!-- Transactions -->
+            <div class="section mt-4">
+                <div class="section-heading">
+                    <h2 class="title">Trending Today's</h2>
+                    <a href="app-transactions.html" class="link">View All</a>
+                </div><ul class="listview image-listview media">
+                    <li>
+                        <a href="#" class="item">
+                            <div class="imageWrapper">
+                                <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w64">
+                            </div>
+                            <div class="in">
+                                <div>
+                                    Sonic Yoga
+                                    <div class="text-muted">subtext</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item">
+                            <div class="imageWrapper">
+                                <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w64">
+                            </div>
+                            <div class="in">
+                                <div>
+                                    21 Pilates
+                                    <div class="text-muted">subtext</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item">
+                            <div class="imageWrapper">
+                                <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w64">
+                            </div>
+                            <div class="in">
+                                <div>
+                                    Striking Class
+                                    <div class="text-muted">subtext</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="carousel-multiple splide splide--loop splide--ltr splide--draggable is-active" id="splide03" style="visibility: visible;">
-                <div class="splide__track" id="splide03-track" style="padding-left: 16px; padding-right: 16px;">
-                    <ul class="splide__list" id="splide03-list" style="transform: translateX(-1385px);">
+            <!-- * Transactions -->
 
-                        <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
-                            <div class="card" style="background:none;box-shadow: none;">
-                                <div class="card-body">
-                                    <p>
-                                        <img src="https://thewebmax.org/zymmy/images/team/pic1.jpg" alt="image" class="imaged w120 rounded">
-                                    </p>
-                                    <h5 class="card-title" style="text-align:center;">Edith J. Shuster</h5>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
-                            <div class="card" style="background:none;box-shadow: none;">
-                                <div class="card-body">
-                                    <p>
-                                        <img src="https://thewebmax.org/zymmy/images/team/pic2.jpg" alt="image" class="imaged w120 rounded">
-                                    </p>
-                                    <h5 class="card-title" style="text-align:center;">Terry Jackson</h5>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
-                            <div class="card" style="background:none;box-shadow: none;">
-                                <div class="card-body">
-                                    <p>
-                                        <img src="https://thewebmax.org/zymmy/images/team/pic3.jpg" alt="image" class="imaged w120 rounded">
-                                    </p>
-                                    <h5 class="card-title" style="text-align:center;">John L. Diaz</h5>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
-                            <div class="card" style="background:none;box-shadow: none;">
-                                <div class="card-body">
-                                    <p>
-                                        <img src="https://thewebmax.org/zymmy/images/team/pic3.jpg" alt="image" class="imaged w120 rounded">
-                                    </p>
-                                    <h5 class="card-title" style="text-align:center;">Gabriel Wood</h5>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+            <!-- app footer -->
+            <div class="appFooter">
+                <div class="footer-title">
+                    Elluna Application
                 </div>
             </div>
+            <!-- * app footer -->
+
         </div>
-        <!-- * Transactions -->
-
-
-        <!-- Transactions -->
-        <div class="section mt-4">
-            <div class="section-heading">
-                <h2 class="title">Trending Today's</h2>
-                <a href="app-transactions.html" class="link">View All</a>
-            </div><ul class="listview image-listview media">
-                <li>
-                    <a href="#" class="item">
-                        <div class="imageWrapper">
-                            <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w64">
-                        </div>
-                        <div class="in">
-                            <div>
-                                Sonic Yoga
-                                <div class="text-muted">subtext</div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="item">
-                        <div class="imageWrapper">
-                            <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w64">
-                        </div>
-                        <div class="in">
-                            <div>
-                                21 Pilates
-                                <div class="text-muted">subtext</div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="item">
-                        <div class="imageWrapper">
-                            <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w64">
-                        </div>
-                        <div class="in">
-                            <div>
-                                Striking Class
-                                <div class="text-muted">subtext</div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!-- * Transactions -->
-
-        <!-- app footer -->
-        <div class="appFooter">
-            <div class="footer-title">
-                Elluna Application
-            </div>
-        </div>
-        <!-- * app footer -->
-
-    </div>
 <!-- * App Capsule -->
 
 
