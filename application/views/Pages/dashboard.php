@@ -46,7 +46,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
         <!-- Wallet Card -->
         <div class="section full mt-4">
             <div class="section-heading padding">
-                <h2 class="title">Hello, Adrian</h2>
+                <h2 class="title">Hello, <?php echo $_SESSION['user_name']; ?></h2>
                 <a href="app-cards.html" class="link">View All</a>
             </div>
 
@@ -120,7 +120,8 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                                     <!-- <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
                                 </div>
                             </div>
-                        </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
+                        </li>
+                        <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Title 2</h5>
