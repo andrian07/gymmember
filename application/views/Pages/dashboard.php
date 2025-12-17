@@ -47,7 +47,6 @@ require DOC_ROOT_PATH . $this->config->item('header1');
         <div class="section full mt-4">
             <div class="section-heading padding">
                 <h2 class="title">Hello, <?php echo $_SESSION['user_name']; ?></h2>
-                <a href="app-cards.html" class="link">View All</a>
             </div>
 
             <a href="<?php echo base_url();?>User/setting">
@@ -98,9 +97,6 @@ require DOC_ROOT_PATH . $this->config->item('header1');
 
         </div>
         <!-- Wallet Card -->
-
-
-
         <!-- Monthly Bills -->
         <div class="section full mt-4">
             <div class="section-heading padding">
@@ -111,245 +107,95 @@ require DOC_ROOT_PATH . $this->config->item('header1');
             <div class="carousel-multiple splide splide--loop splide--ltr splide--draggable is-active" id="splide03" style="visibility: visible;">
                 <div class="splide__track" id="splide03-track" style="padding-left: 16px; padding-right: 16px;">
                     <ul class="splide__list" id="splide03-list" style="transform: translateX(-987px);">
-
-                        <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
-                            <div class="card bg-dark text-white">
-                                <img src="http://localhost/gym/assets/class/poundfit.jpg" alt="image" class="card-img overlay-img">
-                                <div class="card-img-overlay">
-                                    <h5 class="card-title">Pound Fit</h5>
-                                    <!-- <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
-                                </div>
-                            </div>
-                        </li>
-                        <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Title 2</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title.
-                                    </p>
-                                </div>
-                            </div>
-                        </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Title 3</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title.
-                                    </p>
-                                </div>
-                            </div>
-                        </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Title 4</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title.
-                                    </p>
-                                </div>
-                            </div>
-                        </li><li class="splide__slide" id="splide03-slide01" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Title 1</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="splide__slide is-visible is-active" id="splide03-slide02" style="margin-right: 16px; width: 191px;" aria-hidden="false" tabindex="0">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Title 2</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="splide__slide is-visible" id="splide03-slide03" style="margin-right: 16px; width: 191px;" aria-hidden="false" tabindex="0">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Title 3</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="splide__slide" id="splide03-slide04" style="margin-right: 16px; width: 191px;">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Title 4</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Title 1</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card titles.
-                                    </p>
-                                </div>
-                            </div>
-                        </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Title 2</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title.
-                                    </p>
-                                </div>
-                            </div>
-                        </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Title 3</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title.
-                                    </p>
-                                </div>
-                            </div>
-                        </li><li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Title 4</h5>
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title.
-                                    </p>
-                                </div>
-                            </div>
-                        </li></ul>
-                    </div>
-                </div>
-                <!-- * carousel multiple -->
-            </div>
-            <!-- * Monthly Bills -->
-
-            <!-- Transactions -->
-            <div class="section mt-4">
-                <div class="section-heading">
-                    <h2 class="title">Personal Trainer</h2>
-                    <a href="app-transactions.html" class="link">View All</a>
-                </div>
-                <div class="carousel-multiple splide splide--loop splide--ltr splide--draggable is-active" id="splide03" style="visibility: visible;">
-                    <div class="splide__track" id="splide03-track" style="padding-left: 16px; padding-right: 16px;">
-                        <ul class="splide__list" id="splide03-list" style="transform: translateX(-1385px);">
-
-                            <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
-                                <div class="card" style="background:none;box-shadow: none;">
-                                    <div class="card-body">
-                                        <p>
-                                            <img src="https://thewebmax.org/zymmy/images/team/pic1.jpg" alt="image" class="imaged w120 rounded">
-                                        </p>
-                                        <h5 class="card-title" style="text-align:center;">Edith J. Shuster</h5>
+                        <?php foreach($data['class_data'] as $row){ ?>
+                            <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
+                                <div class="card bg-dark text-white" style="text-align:center;">
+                                    <img src="http://localhost/gym/assets/class/<?php echo $row['class_image']; ?>" alt="image" class="card-img overlay-img" style="height: 130px; width: 184px;">
+                                    <div class="card-img-overlay">
+                                        <h5 class="card-title"><?php echo $row['class_name']; ?></h5>
+                                        <!-- <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
+                                        <div class="price">$ 14</div>
+                                        <a href="#" class="btn btn-primary btn-block btn-sm">DETAIL</a>
                                     </div>
                                 </div>
                             </li>
-                            <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
-                                <div class="card" style="background:none;box-shadow: none;">
-                                    <div class="card-body">
-                                        <p>
-                                            <img src="https://thewebmax.org/zymmy/images/team/pic2.jpg" alt="image" class="imaged w120 rounded">
-                                        </p>
-                                        <h5 class="card-title" style="text-align:center;">Terry Jackson</h5>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
-                                <div class="card" style="background:none;box-shadow: none;">
-                                    <div class="card-body">
-                                        <p>
-                                            <img src="https://thewebmax.org/zymmy/images/team/pic3.jpg" alt="image" class="imaged w120 rounded">
-                                        </p>
-                                        <h5 class="card-title" style="text-align:center;">John L. Diaz</h5>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="splide__slide splide__slide--clone" aria-hidden="true" tabindex="-1" style="margin-right: 16px; width: 191px;">
-                                <div class="card" style="background:none;box-shadow: none;">
-                                    <div class="card-body">
-                                        <p>
-                                            <img src="https://thewebmax.org/zymmy/images/team/pic3.jpg" alt="image" class="imaged w120 rounded">
-                                        </p>
-                                        <h5 class="card-title" style="text-align:center;">Gabriel Wood</h5>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                        <?php } ?>
+                    </ul>
                 </div>
             </div>
-            <!-- * Transactions -->
-
-
-            <!-- Transactions -->
-            <div class="section mt-4">
-                <div class="section-heading">
-                    <h2 class="title">Trending Today's</h2>
-                    <a href="app-transactions.html" class="link">View All</a>
-                </div><ul class="listview image-listview media">
-                    <li>
-                        <a href="#" class="item">
-                            <div class="imageWrapper">
-                                <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w64">
-                            </div>
-                            <div class="in">
-                                <div>
-                                    Sonic Yoga
-                                    <div class="text-muted">subtext</div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="item">
-                            <div class="imageWrapper">
-                                <img src="assets/img/sample/photo/2.jpg" alt="image" class="imaged w64">
-                            </div>
-                            <div class="in">
-                                <div>
-                                    21 Pilates
-                                    <div class="text-muted">subtext</div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="item">
-                            <div class="imageWrapper">
-                                <img src="assets/img/sample/photo/3.jpg" alt="image" class="imaged w64">
-                            </div>
-                            <div class="in">
-                                <div>
-                                    Striking Class
-                                    <div class="text-muted">subtext</div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- * Transactions -->
-
-            <!-- app footer -->
-            <div class="appFooter">
-                <div class="footer-title">
-                    Elluna Application
-                </div>
-            </div>
-            <!-- * app footer -->
-
+            <!-- * carousel multiple -->
         </div>
+        <!-- * Monthly Bills -->
+
+        <!-- PT -->
+        <div class="section full mt-4">
+            <div class="section-heading padding">
+                <h2 class="title">Personal Trainer</h2>
+                <a href="app-bills.html" class="link">View All</a>
+            </div>
+            <!-- carousel multiple -->
+            <div class="carousel-multiple splide splide--loop splide--ltr splide--draggable is-active" id="splide03" style="visibility: visible;">
+                <div class="splide__track" id="splide03-track" style="padding-left: 16px; padding-right: 16px;">
+                    <ul class="splide__list" id="splide03-list" style="transform: translateX(-987px);">
+                        <?php foreach($data['pt_data'] as $row){ ?>
+                            <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
+                                <div class="card bg-dark text-white">
+                                    <img src="http://localhost/gym/assets/pt/<?php echo $row['coach_image']; ?>" alt="image" class="card-img overlay-img" style="height: 130px; width: 184px;">
+                                    <div class="card-img-overlay">
+                                        <h5 class="card-title"><?php echo $row['coach_name']; ?></h5>
+                                        <!-- <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
+                                    </div>
+                                </div>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+            <!-- * carousel multiple -->
+        </div>
+        <!-- * PT -->
+
+
+        <!-- Transactions -->
+        <div class="section mt-4">
+            <div class="section-heading">
+                <h2 class="title">Today's Daily Class</h2>
+                <a href="app-transactions.html" class="link">View All</a>
+            </div>
+            <ul class="listview image-listview media">
+                <?php foreach($data['today_class_data'] as $row){ ?>
+                    <li>
+                        <a href="#" class="item">
+                            <div class="imageWrapper">
+                                <img src="http://localhost/gym/assets/class/<?php echo $row['class_image']; ?>" alt="image" class="imaged w64">
+                            </div>
+                            <div class="in">
+                                <div>
+                                    <?php echo $row['class_name'].' / '. $row['coach_name']; ?>
+                                    <div class="text-muted">
+                                        <?php 
+                                        $datetime = $row['schedule_time_start'];
+                                        echo 'Jam: '.date('H:i', strtotime($datetime));
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+        <!-- * Transactions -->
+
+        <!-- app footer -->
+        <div class="appFooter" style="margin-top:20px;">
+            <div class="footer-title">
+                Elluna Application
+            </div>
+        </div>
+        <!-- * app footer -->
+
+    </div>
 <!-- * App Capsule -->
 
 

@@ -1,18 +1,18 @@
 <!-- App Bottom Menu -->
 <div class="appBottomMenu">
-    <a href="<?php echo base_url(); ?>Dashboard" class="item active">
+    <a href="<?php echo base_url(); ?>Dashboard" class="item active" id="home">
         <div class="col" >
             <ion-icon name="home-outline"></ion-icon>
             <strong>Home</strong>
         </div>
     </a>
-    <a href="app-transactions.html" class="item">
+    <a href="<?php echo base_url(); ?>Discovery" class="item" id="discovery">
         <div class="col">
             <ion-icon name="book-outline"></ion-icon>
             <strong>Discovery</strong>
         </div>
     </a>
-    <a href="<?php echo base_url(); ?>User/absence" class="item">
+    <a href="<?php echo base_url(); ?>User/absence" class="item" id="absen">
         <div class="col">
             <div class="action-button large">
                 <ion-icon name="qr-code-outline" role="img" class="md flip-rtl hydrated"></ion-icon>
@@ -20,13 +20,13 @@
             <strong>Absen</strong>
         </div>
     </a>
-    <a href="app-cards.html" class="item">
+    <a href="app-cards.html" class="item" id="membership">
         <div class="col">
             <ion-icon name="people-outline"></ion-icon>
             <strong>Membership</strong>
         </div>
     </a>
-    <a href="<?php echo base_url(); ?>User/setting" class="item">
+    <a href="<?php echo base_url(); ?>User/setting" class="item" id="setting">
         <div class="col">
             <ion-icon name="person-circle-outline"></ion-icon>
             <strong>Me</strong>
@@ -69,7 +69,7 @@
                 <div class="listview-title mt-1">Menu</div>
                 <ul class="listview flush transparent no-line image-listview">
                     <li>
-                        <a href="index.html" class="item">
+                        <a href="<?php echo base_url(); ?>Dashboard" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="home-outline"></ion-icon>
                             </div>
@@ -80,7 +80,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="app-pages.html" class="item">
+                        <a href="<?php echo base_url(); ?>Discovery" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </div>
@@ -242,7 +242,50 @@ role="dialog">
 	$(document).ready(function() {
 		$('.js-example-basic-single').select2();
 	});
+
+    var controllerName = "<?= $this->router->fetch_class(); ?>";
+    if(controllerName == 'Dashboard'){
+        $('#home').addClass('active');
+        $('#discovery').removeClass('active');
+        $('#absen').removeClass('active');
+        $('#membership').removeClass('active');
+        $('#setting').removeClass('active');
+    }
+    else if(controllerName == 'Discovery')
+    {
+        $('#home').removeClass('active');
+        $('#discovery').addClass('active');
+        $('#absen').removeClass('active');
+        $('#membership').removeClass('active');
+        $('#setting').removeClass('active');
+    }
+    else if(controllerName == 'membership')
+    {
+        $('#home').removeClass('active');
+        $('#discovery').removeClass('active');
+        $('#absen').removeClass('active');
+        $('#membership').addClass('active');
+        $('#setting').removeClass('active');
+    }
+    else if(controllerName == 'setting')
+    {
+        $('#home').removeClass('active');
+        $('#discovery').removeClass('active');
+        $('#absen').removeClass('active');
+        $('#membership').removeClass('active');
+        $('#setting').addClass('active');
+    }
+    else if(controllerName == 'absence')
+    {
+        $('#home').removeClass('active');
+        $('#discovery').removeClass('active');
+        $('#absen').removeClass('active');
+        $('#membership').removeClass('active');
+        $('#setting').removeClass('active');
+    }
+
 </script>
+
 </body>
 
 </html>

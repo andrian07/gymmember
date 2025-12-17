@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods: GET, OPTIONS");
 
-class Dashboard extends CI_Controller {
+class Discovery extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -53,12 +53,10 @@ class Dashboard extends CI_Controller {
 				redirect('Auth', 'refresh');
 			}else{
 				$user_id  = $_SESSION['user_id'];
-				$banner_data['banner_data'] = $this->dashboard_model->banner_data()->result_array();
-				$class_data['class_data'] = $this->dashboard_model->class_data()->result_array();
-				$pt_data['pt_data'] = $this->dashboard_model->pt_data()->result_array();
-				$today_class_data['today_class_data'] = $this->dashboard_model->today_class_data()->result_array();
-				$data['data']  = array_merge($banner_data, $class_data, $pt_data, $today_class_data);
-				$this->load->view('Pages/dashboard', $data);
+				$pt_data['pt_data'] = $this->dashboard_model->pt_data_all()->result_array();
+				$class_data['class_data'] = $this->dashboard_model->class_data_all()->result_array();
+				$data['data'] = array_merge($pt_data, $class_data);
+				$this->load->view('Pages/discovery', $data);
 			}
 		}
 	}
