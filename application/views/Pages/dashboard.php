@@ -97,6 +97,37 @@ require DOC_ROOT_PATH . $this->config->item('header1');
 
         </div>
         <!-- Wallet Card -->
+        <!-- Transactions -->
+        <div class="section mt-4">
+            <div class="section-heading">
+                <h2 class="title">Today's Daily Class</h2>
+                <a href="app-transactions.html" class="link">View All</a>
+            </div>
+            <ul class="listview image-listview media">
+                <?php foreach($data['today_class_data'] as $row){ ?>
+                    <li>
+                        <a href="#" class="item">
+                            <div class="imageWrapper">
+                                <img src="http://localhost/gym/assets/class/<?php echo $row['class_image']; ?>" alt="image" class="imaged w64">
+                            </div>
+                            <div class="in">
+                                <div>
+                                    <?php echo $row['class_name'].' / '. $row['coach_name']; ?>
+                                    <div class="text-muted">
+                                        <?php 
+                                        $datetime = $row['schedule_time_start'];
+                                        echo 'Jam: '.date('H:i', strtotime($datetime));
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+        <!-- * Transactions -->
+
         <!-- Monthly Bills -->
         <div class="section full mt-4">
             <div class="section-heading padding">
@@ -110,12 +141,12 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                         <?php foreach($data['class_data'] as $row){ ?>
                             <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
                                 <div class="card bg-dark text-white" style="text-align:center;">
-                                    <img src="http://localhost/gym/assets/class/<?php echo $row['class_image']; ?>" alt="image" class="card-img overlay-img" style="height: 130px; width: 184px;">
+                                    <img src="http://localhost/gym/assets/class/<?php echo $row['class_image']; ?>" alt="image" class="card-img overlay-img" style="height: 130px;">
                                     <div class="card-img-overlay">
                                         <h5 class="card-title"><?php echo $row['class_name']; ?></h5>
                                         <!-- <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
-                                        <div class="price">$ 14</div>
-                                        <a href="#" class="btn btn-primary btn-block btn-sm">DETAIL</a>
+                                        <p>Easy. 60 Min</p>
+                                        <a href="#" class="btn btn-primary btn-block btn-sm">Join</a>
                                     </div>
                                 </div>
                             </li>
@@ -156,36 +187,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
         <!-- * PT -->
 
 
-        <!-- Transactions -->
-        <div class="section mt-4">
-            <div class="section-heading">
-                <h2 class="title">Today's Daily Class</h2>
-                <a href="app-transactions.html" class="link">View All</a>
-            </div>
-            <ul class="listview image-listview media">
-                <?php foreach($data['today_class_data'] as $row){ ?>
-                    <li>
-                        <a href="#" class="item">
-                            <div class="imageWrapper">
-                                <img src="http://localhost/gym/assets/class/<?php echo $row['class_image']; ?>" alt="image" class="imaged w64">
-                            </div>
-                            <div class="in">
-                                <div>
-                                    <?php echo $row['class_name'].' / '. $row['coach_name']; ?>
-                                    <div class="text-muted">
-                                        <?php 
-                                        $datetime = $row['schedule_time_start'];
-                                        echo 'Jam: '.date('H:i', strtotime($datetime));
-                                        ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                <?php } ?>
-            </ul>
-        </div>
-        <!-- * Transactions -->
+
 
         <!-- app footer -->
         <div class="appFooter" style="margin-top:20px;">
@@ -196,14 +198,14 @@ require DOC_ROOT_PATH . $this->config->item('header1');
         <!-- * app footer -->
 
     </div>
-<!-- * App Capsule -->
+    <!-- * App Capsule -->
 
 
 
-<?php 
-require DOC_ROOT_PATH . $this->config->item('footer1');
-?>
-<script>
+    <?php 
+    require DOC_ROOT_PATH . $this->config->item('footer1');
+    ?>
+    <script>
     // Add to Home with 2 seconds delay.
     AddtoHome("2000", "once");
 </script>
