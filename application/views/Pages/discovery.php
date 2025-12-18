@@ -36,7 +36,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="tab" href="#paid" role="tab">
-                    Personal Trainer
+                    PT & Instruktur
                 </a>
             </li>
         </ul>
@@ -74,16 +74,28 @@ require DOC_ROOT_PATH . $this->config->item('header1');
             <!-- paid tab -->
             <div class="tab-pane fade" id="paid" role="tabpanel">
                 <div class="row">
-                    <div class="col-6 mb-2">
-                        <div class="bill-box">
-                            <div class="img-wrapper">
-                                <img src="assets/img/sample/brand/1.jpg" alt="img" class="image-block imaged w48">
-                            </div>
-                            <div class="price">$ 14</div>
-                            <p>Prime Monthly Subscription</p>
-                            <a href="#" class="btn btn-primary btn-block btn-sm">DETAIL</a>
-                        </div>
-                    </div>
+                    <ul class="listview image-listview media">
+                        <?php foreach($data['coach_data'] as $row){ ?>
+                            <li>
+                                <a href="#" class="item" style="padding: 4px 5px;">
+                                    <div class="imageWrapper">
+                                        <img src="<?= $this->config->item('image_url'); ?>pt/<?php echo $row['coach_image']; ?>" alt="image" class="imaged w140">
+                                    </div>
+                                    <div class="in">
+                                        <div>
+                                            <?php echo $row['coach_name']; ?>
+                                            <p class="text-muted"><small><?php echo $row['coach_type']; ?></small></p>
+                                            <div class="text-muted"><?php echo $row['ms_pt_price_name']; ?></div>
+                                            <?php if($row['coach_type'] == 'PT'){ ?>
+                                                <p class="card-text"><small>IDR <?php echo number_format($row['ms_pt_price_price']); ?></small></p>
+                                            <?php } ?>
+                                            
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
                 </div>
             </div>
             <!-- * paid tab -->

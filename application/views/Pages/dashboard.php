@@ -108,7 +108,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                     <li>
                         <a href="#" class="item">
                             <div class="imageWrapper">
-                                <img src="http://localhost/gym/assets/class/<?php echo $row['class_image']; ?>" alt="image" class="imaged w64">
+                                <img src="<?= $this->config->item('image_url'); ?>class/<?php echo $row['class_image']; ?>" alt="image" class="imaged w64">
                             </div>
                             <div class="in">
                                 <div>
@@ -129,7 +129,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
         <!-- * Transactions -->
 
         <!-- Monthly Bills -->
-        <div class="section full mt-4">
+        <div class="section full mt-4">       
             <div class="section-heading padding">
                 <h2 class="title">Explore Classes</h2>
                 <a href="app-bills.html" class="link">View All</a>
@@ -141,12 +141,11 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                         <?php foreach($data['class_data'] as $row){ ?>
                             <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
                                 <div class="card bg-dark text-white" style="text-align:center;">
-                                    <img src="http://localhost/gym/assets/class/<?php echo $row['class_image']; ?>" alt="image" class="card-img overlay-img" style="height: 130px;">
+                                    <img src="<?= $this->config->item('image_url'); ?>class/<?php echo $row['class_image']; ?>" alt="image" class="card-img overlay-img" style="height: 130px;">
                                     <div class="card-img-overlay">
                                         <h5 class="card-title"><?php echo $row['class_name']; ?></h5>
-                                        <!-- <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
-                                        <p>Easy. 60 Min</p>
-                                        <a href="#" class="btn btn-primary btn-block btn-sm">Join</a>
+                                        <p class="card-text"><small>Easy. 60 Min</small></p>
+                                        <a href="#" class="btn btn-primary btn-block btn-sm" style="width: 50%;">Book</a>
                                     </div>
                                 </div>
                             </li>
@@ -171,7 +170,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                         <?php foreach($data['pt_data'] as $row){ ?>
                             <li class="splide__slide splide__slide--clone" style="margin-right: 16px; width: 191px;" aria-hidden="true" tabindex="-1">
                                 <div class="card bg-dark text-white">
-                                    <img src="http://localhost/gym/assets/pt/<?php echo $row['coach_image']; ?>" alt="image" class="card-img overlay-img" style="height: 130px; width: 184px;">
+                                    <img src="<?= $this->config->item('image_url'); ?>pt/<?php echo $row['coach_image']; ?>" alt="image" class="card-img overlay-img" style="height: 130px; width: 184px;">
                                     <div class="card-img-overlay">
                                         <h5 class="card-title"><?php echo $row['coach_name']; ?></h5>
                                         <!-- <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
@@ -207,8 +206,8 @@ require DOC_ROOT_PATH . $this->config->item('header1');
     ?>
     <script>
     // Add to Home with 2 seconds delay.
-    AddtoHome("2000", "once");
-</script>
+        AddtoHome("2000", "once");
+    </script>
 
 </body>
 

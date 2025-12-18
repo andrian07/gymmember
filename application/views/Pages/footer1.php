@@ -20,7 +20,7 @@
             <strong>Absen</strong>
         </div>
     </a>
-    <a href="app-cards.html" class="item" id="membership">
+    <a href="<?php echo base_url(); ?>Membership" class="item" id="membership">
         <div class="col">
             <ion-icon name="people-outline"></ion-icon>
             <strong>Membership</strong>
@@ -56,10 +56,7 @@
                 <!-- * profile box -->
                 <!-- balance -->
                 <div class="sidebar-balance">
-                    <div class="listview-title">Balance</div>
-                    <div class="in">
-                        <h1 class="amount">100.000</h1>
-                    </div>
+                    <div class="listview-title">Elluna Member</div>
                 </div>
                 <!-- * balance -->
 
@@ -75,14 +72,13 @@
                             </div>
                             <div class="in">
                                 Home
-                                <span class="badge badge-primary">10</span>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>Discovery" class="item">
                             <div class="icon-box bg-primary">
-                                <ion-icon name="document-text-outline"></ion-icon>
+                                <ion-icon name="book-outline"></ion-icon>
                             </div>
                             <div class="in">
                                 Discovery
@@ -92,20 +88,10 @@
                     <li>
                         <a href="app-components.html" class="item">
                             <div class="icon-box bg-primary">
-                                <ion-icon name="apps-outline"></ion-icon>
+                                <ion-icon name="people-outline"></ion-icon>
                             </div>
                             <div class="in">
-                                Components
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="app-cards.html" class="item">
-                            <div class="icon-box bg-primary">
-                                <ion-icon name="card-outline"></ion-icon>
-                            </div>
-                            <div class="in">
-                                My Cards
+                                Membership
                             </div>
                         </a>
                     </li>
@@ -259,7 +245,7 @@ role="dialog">
         $('#membership').removeClass('active');
         $('#setting').removeClass('active');
     }
-    else if(controllerName == 'membership')
+    else if(controllerName == 'Membership')
     {
         $('#home').removeClass('active');
         $('#discovery').removeClass('active');
@@ -275,7 +261,7 @@ role="dialog">
         $('#membership').removeClass('active');
         $('#setting').addClass('active');
     }
-    else if(controllerName == 'absence')
+    else if(controllerName == 'Absence')
     {
         $('#home').removeClass('active');
         $('#discovery').removeClass('active');

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods: GET, OPTIONS");
 
-class Discovery extends CI_Controller {
+class Membership extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -11,6 +11,7 @@ class Discovery extends CI_Controller {
 		$this->load->library('session');
 		$this->load->model('global_model');
 		$this->load->model('dashboard_model');
+		$this->load->model('membership_model');
 		$this->load->helper(array('url', 'html'));
 		$this->csrf_name = $this->security->get_csrf_token_name();
 		$this->csrf_hash = $this->security->get_csrf_hash();
@@ -53,10 +54,10 @@ class Discovery extends CI_Controller {
 				redirect('Auth', 'refresh');
 			}else{
 				$user_id  = $_SESSION['user_id'];
-				$coach_data['coach_data'] = $this->dashboard_model->coach_data_all()->result_array();
-				$class_data['class_data'] = $this->dashboard_model->class_data_all()->result_array();
-				$data['data'] = array_merge($coach_data, $class_data);
-				$this->load->view('Pages/discovery', $data);
+				$my_package['my_package'] = $this->membership_model->my_package()->result_array();
+				$gym_package_member['gym_package_member'] = $this->membership_model->gym_package_member()->result_array();	
+				$data['data']  = array_merge($gym_package_member, $my_package);
+				$this->load->view('Pages/membership', $data);
 			}
 		}
 	}

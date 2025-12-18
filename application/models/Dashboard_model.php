@@ -51,6 +51,16 @@ class dashboard_model extends CI_Model {
         $query = $this->db->get();
         return $query;
     }
+    public function coach_data_all()
+    {
+        $this->db->select('*');
+        $this->db->from('ms_coach');
+        $this->db->join('ms_pt_price', 'ms_coach.coach_lvl = ms_pt_price.ms_pt_price_id', 'left');  
+        $this->db->where('coach_active', 'Y');
+        $this->db->order_by('coach_type', 'asc');
+        $query = $this->db->get();
+        return $query;
+    }
 
     public function today_class_data()
     {   
@@ -82,6 +92,7 @@ class dashboard_model extends CI_Model {
         $this->db->join('ms_coach', 'schedule_class.coach_id  = ms_coach.coach_id');
         $this->db->where('schedule_day', $date);        
         $this->db->where('class_active', 'Y');
+        $this->db->limit('5');
         $query = $this->db->get();
         return $query;
     }
