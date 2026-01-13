@@ -46,19 +46,17 @@ class Membership extends CI_Controller {
 	public function index()
 	{
 		$check_auth = $this->check_auth();
+		$my_package['my_package'] = $this->membership_model->my_package()->result_array();
+		$gym_package_member['gym_package_member'] = $this->membership_model->gym_package_member()->result_array();
 		if($check_auth == 0){
-			redirect('Auth', 'refresh');
+			$cookies['cookies'] = 0;
+			$data['data'] = array_merge($my_package, $gym_package_member, $cookies);
+			$this->load->view('Pages/membership', $data);
 		}else{
 			$check_cokies = $this->check_cookies();
-			if($check_cokies == 0){
-				redirect('Auth', 'refresh');
-			}else{
-				$user_id  = $_SESSION['user_id'];
-				$my_package['my_package'] = $this->membership_model->my_package()->result_array();
-				$gym_package_member['gym_package_member'] = $this->membership_model->gym_package_member()->result_array();	
-				$data['data']  = array_merge($gym_package_member, $my_package);
-				$this->load->view('Pages/membership', $data);
-			}
+			$cookies['cookies'] = $check_cokies;
+			$data['data'] = array_merge($my_package, $gym_package_member, $cookies);
+			$this->load->view('Pages/membership', $data);
 		}
 	}
 

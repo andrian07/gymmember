@@ -101,7 +101,7 @@ class Auth extends CI_Controller {
 			$this->auth_model->update_cookies($cookies_data, $username);
 
 
-			setcookie("cookies_name", $cookies_val, time() + (10 * 365 * 24 * 60 * 60), "/");
+			setcookie("cookies_name", $cookies_val, time() + (30 * 24 * 60 * 60), "/");
 
 			$response = [
 				'code' => '200',

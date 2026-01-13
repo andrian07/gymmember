@@ -12,26 +12,39 @@
             <strong>Discovery</strong>
         </div>
     </a>
-    <a href="<?php echo base_url(); ?>User/absence" class="item" id="absen">
+    
+    <?php if (!empty($_SESSION['user_name']) && $data['cookies'] != 0) { ?>
+        <a href="<?php echo base_url(); ?>User/absence" class="item" id="absen">
         <div class="col">
             <div class="action-button large">
                 <ion-icon name="qr-code-outline" role="img" class="md flip-rtl hydrated"></ion-icon>
             </div>
             <strong>Absen</strong>
         </div>
-    </a>
+        </a>
+    <?php } ?>
+
     <a href="<?php echo base_url(); ?>Membership" class="item" id="membership">
         <div class="col">
             <ion-icon name="people-outline"></ion-icon>
             <strong>Membership</strong>
         </div>
     </a>
-    <a href="<?php echo base_url(); ?>User/setting" class="item" id="setting">
+    <?php if (!empty($_SESSION['user_name']) && $data['cookies'] != 0) { ?>
+    <a href="<?php echo base_url(); ?>Setting" class="item" id="setting">
         <div class="col">
             <ion-icon name="person-circle-outline"></ion-icon>
             <strong>Me</strong>
         </div>
     </a>
+    <?php }else{ ?>
+    <a href="<?php echo base_url(); ?>Auth" class="item" id="setting">
+        <div class="col">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <strong>Login</strong>
+        </div>
+    </a>
+    <?php } ?>
 </div>
 <!-- * App Bottom Menu -->
 
@@ -46,8 +59,11 @@
                         <img src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged  w36">
                     </div>
                     <div class="in">
-                        <strong>Adrian</strong>
-                        <div class="text-muted">4029209</div>
+                         <?php if (!empty($_SESSION['user_name']) && $data['cookies'] != 0) { ?>
+                        <strong><?php echo htmlspecialchars($_SESSION['user_name'], ENT_QUOTES, 'UTF-8'); ?></strong>
+                        <?php } else { ?>
+                            <strong>Guest</strong>
+                        <?php } ?>
                     </div>
                     <a href="#" class="btn btn-link btn-icon sidebar-close" data-bs-dismiss="modal">
                         <ion-icon name="close-outline"></ion-icon>
@@ -85,8 +101,20 @@
                             </div>
                         </a>
                     </li>
+                    <?php if (!empty($_SESSION['user_name']) && $data['cookies'] != 0) { ?>
                     <li>
-                        <a href="app-components.html" class="item">
+                        <a href="<?php echo base_url(); ?>History" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="refresh-outline"></ion-icon>
+                            </div>
+                            <div class="in">
+                                History
+                            </div>
+                        </a>
+                    </li>
+                    <?php } ?>
+                    <li>
+                        <a href="<?php echo base_url(); ?>Membership" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="people-outline"></ion-icon>
                             </div>
@@ -101,8 +129,9 @@
                 <!-- others -->
                 <div class="listview-title mt-1">Others</div>
                 <ul class="listview flush transparent no-line image-listview">
+                    <?php if (!empty($_SESSION['user_name']) && $data['cookies'] != 0) { ?>
                     <li>
-                        <a href="app-settings.html" class="item">
+                        <a href="<?php echo base_url(); ?>Setting" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="settings-outline"></ion-icon>
                             </div>
@@ -111,6 +140,7 @@
                             </div>
                         </a>
                     </li>
+                    <?php } ?>
                     <li>
                         <a href="component-messages.html" class="item">
                             <div class="icon-box bg-primary">
@@ -121,8 +151,9 @@
                             </div>
                         </a>
                     </li>
+                    <?php if (!empty($_SESSION['user_name']) && $data['cookies'] != 0) { ?>
                     <li>
-                        <a href="app-login.html" class="item">
+                        <a href="<?php echo base_url(); ?>Auth/logout" class="item">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="log-out-outline"></ion-icon>
                             </div>
@@ -131,6 +162,7 @@
                             </div>
                         </a>
                     </li>
+                    <?php } ?>
 
 
                 </ul>
@@ -227,7 +259,11 @@ role="dialog">
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.js-example-basic-single').select2();
-	});
+
+        if($(window).width() > 768){
+            $('body').html('<h3 style="text-align:center;margin-top:50px">Mobile Only Access</h3>');
+        }
+    });
 
     var controllerName = "<?= $this->router->fetch_class(); ?>";
     if(controllerName == 'Dashboard'){
@@ -253,7 +289,7 @@ role="dialog">
         $('#membership').addClass('active');
         $('#setting').removeClass('active');
     }
-    else if(controllerName == 'setting')
+    else if(controllerName == 'Setting')
     {
         $('#home').removeClass('active');
         $('#discovery').removeClass('active');
@@ -271,7 +307,3 @@ role="dialog">
     }
 
 </script>
-
-</body>
-
-</html>

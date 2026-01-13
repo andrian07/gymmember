@@ -148,16 +148,16 @@ class Register extends CI_Controller {
 			echo json_encode(['code'=>0, 'result'=>$response]);die();
 		}
 
-		if (!$signature) {
+		/*if (!$signature) {
 			$response = [
 				'code' => '0',
 				'result' => 'Tanda Tangan Harus Di isi',
 				'csrf_name' => $csrf_name,
 				'csrf_hash' => $csrf_hash
 			];
-			echo json_encode(['code'=>0, 'result'=>$response]);die();
-		}else{
-			$signature = str_replace('data:image/png;base64,', '', $signature);
+			echo json_encode(['code'=>0, 'result'=>$response]);die();*/
+		//}else{
+			/*$signature = str_replace('data:image/png;base64,', '', $signature);
 			$signature = str_replace(' ', '+', $signature);
 
 			$image = base64_decode($signature);
@@ -169,7 +169,7 @@ class Register extends CI_Controller {
 					'status' => true,
 					'file' => $new_image_name
 				]);
-			}
+			}*/
 
 			$maxCode = $this->register_model->last_member_code()->result_array();
 			if ($maxCode == NULL) {
@@ -187,9 +187,9 @@ class Register extends CI_Controller {
 				'member_email'	       => $email,
 				'member_gender'	       => $gender,
 				'member_dob'	       => $dob,
-				'member_referal'	   => $referal_code,
+				'member_referal'	   => '',
 				'member_pass'	       => md5($pass),
-				'member_signature'	   => $new_image_name,
+				//'member_signature'	   => $new_image_name,
 			);
 			$this->register_model->save_member($insert);
 			$response = [
@@ -199,7 +199,7 @@ class Register extends CI_Controller {
 				'csrf_hash' => $csrf_hash
 			];
 			echo json_encode(['code'=>200, 'result'=>$response]);die();
-		}	
+		//}	
 	}
 
 	public function forgetpass()

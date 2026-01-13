@@ -35,7 +35,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                         <div class="form-group basic">
                             <div class="input-wrapper">
                                 <label class="label" for="email1">No HP</label>
-                                <input type="number" class="form-control" id="name" placeholder="No HP">
+                                <input type="tel" class="form-control" id="name" placeholder="No HP">
                                 <i class="clear-input">
                                     <ion-icon name="close-circle"></ion-icon>
                                 </i>
@@ -96,7 +96,6 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                     pass:pass
                 },                                                               
                 success : function(data){
-                    console.log(data);
                     if (data.result.csrf_name && data.result.csrf_hash) {
                         $('meta[name=csrf-name]').attr('content', data.result.csrf_name);
                         $('meta[name=csrf-hash]').attr('content', data.result.csrf_hash);

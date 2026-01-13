@@ -89,7 +89,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                             </i>
                         </div>
                     </div>
-
+                    <!--
                     <div class="form-group basic">
                         <div class="input-wrapper">
                             <label class="label" for="pass">Kore Referal</label>
@@ -99,7 +99,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                             </i>
                         </div>
                     </div>
-
+                    -->
                     <div class="form-group basic">
                         <div class="input-wrapper">
                             <label class="label" for="pass">Password</label>
@@ -222,7 +222,7 @@ require DOC_ROOT_PATH . $this->config->item('footer2');
     var canvas          = document.getElementById('signature-pad');
     var signaturePad    = new SignaturePad(canvas);
 
-    $(document).ready(function () {
+    /*$(document).ready(function () {
         $('#register').click(function () {
             $('#termsModal').modal('show');
         });
@@ -236,9 +236,9 @@ require DOC_ROOT_PATH . $this->config->item('footer2');
         if (!signaturePad.isEmpty()) {
             $('#signature').val(signaturePad.toDataURL());
         }
-    });
+    });*/
 
-    $('#btnsave').click(function(e){
+    $('#register').click(function(e){
         e.preventDefault();
         var name          = $("#name").val();
         var phone         = $("#phone").val();
@@ -247,20 +247,12 @@ require DOC_ROOT_PATH . $this->config->item('footer2');
         var gender        = $("#gender").val();
         var pass          = $("#pass").val();
         var cfpass        = $("#cfpass").val();
-        var referal_code  = $("#referal_code").val();
+        var referal_code  = '123';
         let csrfName      = $('meta[name=csrf-name]').attr('content');
         let csrfHash      = $('meta[name=csrf-hash]').attr('content');
 
-        var signature      = signaturePad.toDataURL('image/png');
-
-        if (signaturePad.isEmpty()) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: "Tanda Tangan Belum Di Isi",
-            })
-        }else{
-            $.ajax({
+        //var signature      = signaturePad.toDataURL('image/png');
+        $.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>Register/register_member",
                 dataType: "json",   
@@ -274,7 +266,7 @@ require DOC_ROOT_PATH . $this->config->item('footer2');
                     pass:pass,
                     cfpass:cfpass,
                     referal_code:referal_code,
-                    signature: signature,
+                    //signature: signature,
                 },
                 success : function(data){
                     console.log(data);
@@ -293,7 +285,6 @@ require DOC_ROOT_PATH . $this->config->item('footer2');
                     })
                   }
               }
-          });
-        }
+        });
     });
 </script>

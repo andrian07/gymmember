@@ -36,7 +36,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="tab" href="#paid" role="tab">
-                    PT & Instruktur
+                    Personal Trainer
                 </a>
             </li>
         </ul>
@@ -53,11 +53,11 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                     <ul class="listview image-listview media">
                         <?php foreach($data['class_data'] as $row){ ?>
                             <li>
-                                <a href="#" class="item">
+                                <a href="<?php echo base_url(); ?>Discovery/detailclass?id=<?php echo $row['class_id']; ?>" class="item">
                                     <div class="in">
                                         <div>
                                             <?php echo $row['class_name']; ?>
-                                            <div class="text-muted" style="margin-top:10px;"><ion-icon name="time-outline"></ion-icon> 16:00 - 17:00</div>
+                                            <div class="text-muted" style="margin-top:10px;"><ion-icon name="calendar-outline"></ion-icon> <?php echo $row['schedule_days']; ?></div>
                                             <div class="text-muted" style="margin-top:5px;"><ion-icon name="location-outline"></ion-icon> Elluna Gym & Sports</div>
                                         </div>
                                     </div>
@@ -77,7 +77,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                     <ul class="listview image-listview media">
                         <?php foreach($data['coach_data'] as $row){ ?>
                             <li>
-                                <a href="#" class="item" style="padding: 4px 5px;">
+                                <a href="<?php echo base_url(); ?>Discovery/detailpt?id=<?php echo $row['coach_id']; ?>" class="item" style="padding: 4px 5px;">
                                     <div class="imageWrapper">
                                         <img src="<?= $this->config->item('image_url'); ?>pt/<?php echo $row['coach_image']; ?>" alt="image" class="imaged w140">
                                     </div>

@@ -11,7 +11,11 @@ var CACHE_NAME = 'cache-version-' + VERSION;
 
 // Files
 var REQUIRED_FILES = [
-  'index.html'
+  '/',
+  '/assets/css/style.css',
+  '/assets/js/base.js',
+  '/assets/img/logo.png',
+  '/dist/manifest.json'
 ];
 
 self.addEventListener('install', function (event) {

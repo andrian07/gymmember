@@ -66,11 +66,51 @@ var loader = document.getElementById('loader');
 //-----------------------------------------------------------------------
 if (Finapp.PWA.enable) {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('__service-worker.js')
+        navigator.serviceWorker.register('dist/service-worker.js')
         .then(reg => console.log('service worker registered'))
         .catch(err => console.log('service worker not registered - there is an error.', err));
     }
 }
+//-----------------------------------------------------------------------
+// PWA Install Prompt
+//-----------------------------------------------------------------------
+let deferredPrompt;
+const installButton = document.getElementById('btn-install') || document.getElementById('install-pwa-button');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    // Update UI to notify the user they can install the PWA
+    if (installButton) {
+        installButton.style.display = 'block';
+    }
+});
+
+if (installButton) {
+    installButton.addEventListener('click', (e) => {
+        // Hide the install button
+        installButton.style.display = 'none';
+        // Show the install prompt
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                } else {
+                    console.log('User dismissed the install prompt');
+                }
+                deferredPrompt = null;
+            });
+        }
+    });
+}
+
+window.addEventListener('appinstalled', (evt) => {
+    console.log('PWA was installed');
+});
 //-----------------------------------------------------------------------
 
 

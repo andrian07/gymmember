@@ -25,6 +25,9 @@ require DOC_ROOT_PATH . $this->config->item('header1');
         <div class="pageTitle">
             Membership
         </div>
+        <div class="right">
+            <button id="install-pwa-button" style="display: none; background: #6236FF; color: white; border: none; padding: 8px 12px; border-radius: 5px; font-size: 12px;">Install App</button>
+        </div>
     </div>
     <div id="appCapsule" class="extra-header-active full-height">
         <div class="section mt-4" style="margin-top:-40px !important;">
@@ -53,11 +56,11 @@ require DOC_ROOT_PATH . $this->config->item('header1');
 
                 <?php foreach($data['gym_package_member'] as $row){ ?>
                     <div class="col-6 mb-2">
-                        <a href="app-blog-post.html">
+                        <a href="">
                             <div class="blog-card">
-                                <img src="assets/img/sample/photo/1.jpg" alt="image" class="imaged w-100">
+                                <img src="<?= $this->config->item('image_url'); ?>Package/<?php echo $row['ms_gym_package_image']; ?>" alt="image" class="imaged w-100" onerror="this.src='assets/img/default.png'" style="height: 100px;">
                                 <div class="text">
-                                    <h4 class="title">Enjoy your fitness in 4 Month Package with Elluna Gym</h4>
+                                    <h4 style="overflow: hidden;">Enjoy your fitness in <?php echo $row['ms_gym_package_name']; ?></h4>
                                 </div>
                             </div>
                         </a>
@@ -77,8 +80,8 @@ require DOC_ROOT_PATH . $this->config->item('header1');
     ?>
     <script>
     // Add to Home with 2 seconds delay.
-        AddtoHome("2000", "once");
-    </script>
+    AddtoHome("2000", "once");
+</script>
 
 </body>
 

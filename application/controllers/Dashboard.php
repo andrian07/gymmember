@@ -45,19 +45,25 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$check_auth = $this->check_auth();
+		$banner_data['banner_data'] = $this->dashboard_model->banner_data()->result_array();
+		$class_data['class_data'] = $this->dashboard_model->class_data()->result_array();
+		$pt_data['pt_data'] = $this->dashboard_model->pt_data()->result_array();
+		$today_class_data['today_class_data'] = $this->dashboard_model->today_class_data()->result_array();
+		$cookies['cookies'] = 0;
 		if($check_auth == 0){
-			redirect('Auth', 'refresh');
+			$data['data']  = array_merge($banner_data, $class_data, $pt_data, $today_class_data, $cookies);
+			$this->load->view('Pages/dashboard', $data);
 		}else{
 			$check_cokies = $this->check_cookies();
 			if($check_cokies == 0){
-				redirect('Auth', 'refresh');
+				$data['data']  = array_merge($banner_data, $class_data, $pt_data, $today_class_data, $cookies);
+				$this->load->view('Pages/dashboard', $data);
 			}else{
 				$user_id  = $_SESSION['user_id'];
-				$banner_data['banner_data'] = $this->dashboard_model->banner_data()->result_array();
-				$class_data['class_data'] = $this->dashboard_model->class_data()->result_array();
-				$pt_data['pt_data'] = $this->dashboard_model->pt_data()->result_array();
-				$today_class_data['today_class_data'] = $this->dashboard_model->today_class_data()->result_array();
-				$data['data']  = array_merge($banner_data, $class_data, $pt_data, $today_class_data);
+				$cookies['cookies'] = 1;
+				$dasboard_history['dasboard_history'] = $this->dashboard_model->dasboard_history($user_id)->result_array();
+				$my_data['my_data'] = $this->dashboard_model->my_data($user_id)->result_array();
+				$data['data']  = array_merge($banner_data, $class_data, $pt_data, $today_class_data, $my_data, $cookies, $dasboard_history);
 				$this->load->view('Pages/dashboard', $data);
 			}
 		}
