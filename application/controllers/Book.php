@@ -216,4 +216,223 @@ class Book extends CI_Controller {
 			}
         }
     }
+
+	public function buy_gym_package()
+	{
+		$check_auth = $this->check_auth();
+        if($check_auth == 0){
+            $response = array(
+                'code' => '0',
+                'status' => 'error',
+                'message' => 'Silahkan Register / login terlebih dahulu',
+                'csrf_name' => $this->csrf_name,
+				'csrf_hash' => $this->csrf_hash
+            );
+            echo json_encode($response);
+            die();
+	    }else{
+			$user_id = $_SESSION['user_id'];
+            $class_package_id = $this->input->post('class_package_id');
+		}
+	}
+
+	public function bookgym()
+	{
+		$check_auth = $this->check_auth();
+        if($check_auth == 0){
+            $response = array(
+                'code' => '0',
+                'status' => 'error',
+                'message' => 'Silahkan Register / login terlebih dahulu',
+                'csrf_name' => $this->csrf_name,
+				'csrf_hash' => $this->csrf_hash
+            );
+            echo json_encode($response);
+            die();
+	    }else{
+			$user_id = $_SESSION['user_id'];
+            $gym_package_id = $this->input->post('gym_package_id');
+			$gym_start_date = $this->input->post('gym_start_date');
+
+			$check_register_today_gym = $this->book_model->check_register_today_gym($user_id, $gym_package_id, $gym_start_date)->result_array();
+			if($check_register_today_gym != null){
+				$response = array(
+					'code' => '0',
+					'status' => 'error',
+					'message' => 'Anda sudah terdaftar pada kelas ini hari ini',
+					'transaction_register_id' => $check_register_today_gym[0]['transaction_register_id'],
+					'csrf_name' => $this->csrf_name,
+					'csrf_hash' => $this->csrf_hash
+				);
+				echo json_encode($response);
+				die();
+			}
+			$check_active_class_gym = $this->book_model->check_active_class_gym($user_id, $gym_package_id, $gym_start_date)->result_array();
+			if($check_active_class_gym != null){
+				$response = array(
+					'code' => '0',
+					'status' => 'error',
+					'message' => 'Paket Kelas ini masih aktif, silahkan pilih tanggal lain',
+					'csrf_name' => $this->csrf_name,
+					'csrf_hash' => $this->csrf_hash
+				);
+				echo json_encode($response);
+				die();
+			}else{
+				$get_package_price_gym 	= $this->book_model->get_package_price_gym($gym_package_id)->result_array();
+				$price = $get_package_price_gym[0]['package_price'];
+				$maxCode  = $this->book_model->last_book()->result_array();
+				$inv_code = 'TRX/'.date("d/m/Y").'/';
+				if ($maxCode == NULL) {
+					$last_code_trx = $inv_code.'000001';
+				} else {
+					$maxCode   = $maxCode[0]['transaction_register_inv'];
+					$last_code = substr($maxCode, -6);
+					$last_code_trx = $inv_code.substr('000000' . strval(floatval($last_code) + 1), -6);
+				}
+				$data = array(
+					'transaction_register_inv'	    => $last_code_trx,
+					'transaction_register_date'		=> date('Y/m/d'),
+					'member_id'	       				=> $user_id,
+					'transaction_type_member'	   	=> 'Member',
+					'member_gym'	    			=> 'Y',
+					'transaction_gym_month'			=> $gym_package_id,
+					'transaction_gym_price'			=> $price,
+					'transaction_gym_total_price'	=> $price,
+					'transaction_payment_total'		=> $price,
+					'transaction_payment_status'	=> 'Belum Lunas',
+					'transaction_type'				=> 'Member',
+					'transaction_user_id'			=> 2
+				);
+				$book_class = $this->book_model->book_class($data);
+				
+				if($book_class){
+					$response = array(
+						'code' => '200',
+						'status' => 'success',
+						'message' => 'Berhasil Beli Paket Kelas',
+						'transaction_register_id' => $book_class,
+						'csrf_name' => $this->csrf_name,
+						'csrf_hash' => $this->csrf_hash
+					);
+				}else{
+					$response = array(
+						'code' => '0',
+						'status' => 'error',
+						'message' => 'Gagal Booking Kelas',
+						'csrf_name' => $this->csrf_name,
+						'csrf_hash' => $this->csrf_hash
+					);
+				}
+				echo json_encode($response);
+				die();
+			}
+        }
+	}
+
+
+	public function bookmonthlypt()
+	{
+		$check_auth = $this->check_auth();
+        if($check_auth == 0){
+            $response = array(
+                'code' => '0',
+                'status' => 'error',
+                'message' => 'Silahkan Register / login terlebih dahulu',
+                'csrf_name' => $this->csrf_name,
+				'csrf_hash' => $this->csrf_hash
+            );
+            echo json_encode($response);
+            die();
+	    }else{
+			$user_id = $_SESSION['user_id'];
+            $pt_session = $this->input->post('pt_session');
+			$class_start_date = $this->input->post('class_start_date');
+
+			if($pt_session == null){
+				$response = array(
+					'code' => '0',
+					'status' => 'error',
+					'message' => 'Silahkan Pilih Sesi PT',
+					'csrf_name' => $this->csrf_name,
+					'csrf_hash' => $this->csrf_hash
+				);
+				echo json_encode($response);
+				die();
+			}
+			$check_register_today_pt = $this->book_model->check_register_today_pt($user_id, $pt_session)->result_array();
+			if($check_register_today_pt != null){
+				$response = array(
+					'code' => '0',
+					'status' => 'error',
+					'message' => 'Anda sudah melakukan booking pt ini',
+					'transaction_register_id' => $check_register_today_pt[0]['transaction_register_id'],
+					'csrf_name' => $this->csrf_name,
+					'csrf_hash' => $this->csrf_hash
+				);
+				echo json_encode($response);
+				die();
+			}
+			$check_active_class_pt = $this->book_model->check_active_class_pt($user_id, $pt_session, $class_start_date)->result_array();
+			if($check_active_class_pt != null){
+				$response = array(
+					'code' => '0',
+					'status' => 'error',
+					'message' => 'Paket PT ini masih aktif, silahkan pilih tanggal lain',
+					'csrf_name' => $this->csrf_name,
+					'csrf_hash' => $this->csrf_hash
+				);
+				echo json_encode($response);
+				die();
+			}else{
+				$get_package_price_pt 	= $this->book_model->get_package_price_pt($pt_session)->result_array();
+				$price = $get_package_price_pt[0]['ms_pt_package_price'];
+				$maxCode  = $this->book_model->last_book()->result_array();
+				$inv_code = 'TRX/'.date("d/m/Y").'/';
+				if ($maxCode == NULL) {
+					$last_code_trx = $inv_code.'000001';
+				} else {
+					$maxCode   = $maxCode[0]['transaction_register_inv'];
+					$last_code = substr($maxCode, -6);
+					$last_code_trx = $inv_code.substr('000000' . strval(floatval($last_code) + 1), -6);
+				}
+				$data = array(
+					'transaction_register_inv'	    => $last_code_trx,
+					'transaction_register_date'		=> date('Y/m/d'),
+					'member_id'	       				=> $user_id,
+					'transaction_type_member'	   	=> 'Member',
+					'transaction_pt'	    		=> 'Y',
+					'transaction_pt_id'				=> $pt_session,
+					'transaction_pt_price'			=> $price,
+					'transaction_pt_total_price'	=> $price,
+					'transaction_payment_total'		=> $price,
+					'transaction_payment_status'	=> 'Belum Lunas',
+					'transaction_type'				=> 'Member',
+					'transaction_user_id'			=> 2
+				);
+				$book_pt = $this->book_model->book_pt($data);
+				
+				if($book_pt){
+					$response = array(
+						'code' => '200',
+						'status' => 'success',
+						'message' => 'Berhasil Beli Paket PT',
+						'transaction_register_id' => $book_pt,
+						'csrf_name' => $this->csrf_name,
+						'csrf_hash' => $this->csrf_hash
+					);
+				}else{
+					$response = array(
+						'code' => '0',
+						'status' => 'error',
+						'message' => 'Gagal Booking Kelas',
+						'csrf_name' => $this->csrf_name,
+						'csrf_hash' => $this->csrf_hash
+					);
+				}
+				echo json_encode($response);
+				die();
+			}
+        }
+	}
 }

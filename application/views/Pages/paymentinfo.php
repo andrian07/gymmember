@@ -249,6 +249,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
                             window.location.href = "<?php echo base_url(); ?>Payment/uploadpayment?id=" + data.transaction_register_id;
                     }else{
                         $('#error-message').text(data.message);
+                        $('#error-message-2').html('<a href="<?php echo base_url(); ?>History">Lihat Info Transaksi</a>');
                         $('#ErrorBookDaily').modal('show');
                         $('#DialogIconedButtonInline').modal('hide');
                     }

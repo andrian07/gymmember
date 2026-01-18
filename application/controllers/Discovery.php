@@ -114,17 +114,52 @@ class Discovery extends CI_Controller {
 	public function detailpt()
 	{
 		$check_auth = $this->check_auth();
-		$class_id = $this->input->get('id');
-		$pt_information['pt_information'] = $this->discovery_model->pt_information($class_id)->result_array();
+		$pt_id = $this->input->get('id');
+		$ms_pt_package['ms_pt_package'] = $this->discovery_model->ms_pt_package($pt_id)->result_array();
+		$pt_information['pt_information'] = $this->discovery_model->pt_information($pt_id)->result_array();
 		if($check_auth == 0){
 			$cookies['cookies'] = 0;
-			$data['data'] = array_merge($pt_information, $cookies);
+			$data['data'] = array_merge($pt_information, $cookies, $ms_pt_package);
 			$this->load->view('Pages/detailpt', $data);
 		}else{
 			$check_cokies = $this->check_cookies();
 			$cookies['cookies'] = $check_cokies;
-			$data['data'] = array_merge($pt_information, $cookies);
+			$data['data'] = array_merge($pt_information, $cookies, $ms_pt_package);
 			$this->load->view('Pages/detailpt', $data);
+		}
+	}
+
+	public function get_pt_price(){
+		$package_id = $this->input->post('package_id');
+		
+		if($package_id == null){
+			$response = [
+				'code' => '0',
+				'result' => 'Package ID is required',
+				'csrf_name' => $this->csrf_name,
+				'csrf_hash' => $this->csrf_hash
+			];
+			echo json_encode($response);die();
+		}
+
+		$price = $this->discovery_model->get_pt_price($package_id)->result_array();
+		
+		if($price){
+			$response = [
+				'code' => '200',
+				'result' => $price[0]['price'],
+				'csrf_name' => $this->csrf_name,
+				'csrf_hash' => $this->csrf_hash
+			];
+			echo json_encode($response);
+		}else{
+			$response = [
+				'code' => '0',
+				'result' => 'Paket Tidak DI Temukan',
+				'csrf_name' => $this->csrf_name,
+				'csrf_hash' => $this->csrf_hash
+			];
+			echo json_encode($response);
 		}
 	}
 

@@ -4,15 +4,22 @@ class history_model extends CI_Model {
 
     public function get_history($user_id, $limit = null, $offset = null)
     {
-        $this->db->select('transaction_register.*, ms_class.class_price_day, ms_class.class_name');
+        $this->db->select("
+            transaction_register.*,
+            COALESCE(
+                ms_class_package.ms_class_package_name,
+                ms_gym_package.ms_gym_package_name,
+                ms_pt_package_price.ms_pt_package_price_name
+            ) AS class_name,
+            ms_payment.payment_name
+        ", false);
         $this->db->from('transaction_register');
-        $this->db->join('ms_member', 'transaction_register.member_id = ms_member.member_id');
-        $this->db->join('ms_class', 'transaction_register.transaction_class_id = ms_class.class_id');
+        $this->db->join('ms_class_package', 'transaction_register.transaction_class_month = ms_class_package.ms_class_package_id', 'left');
+        $this->db->join('ms_gym_package', 'transaction_register.transaction_gym_month = ms_gym_package.ms_gym_package_id', 'left');
+        $this->db->join('ms_pt_package_price', 'transaction_register.transaction_pt_id = ms_pt_package_price.ms_pt_package_id', 'left');
+        $this->db->join('ms_payment', 'transaction_register.transaction_payment_id = ms_payment.payment_id', 'left');
         $this->db->where('transaction_register.member_id', $user_id);
         $this->db->order_by('transaction_register.transaction_register_id', 'desc');
-        if ($limit !== null) {
-            $this->db->limit($limit, $offset);
-        }
         $query = $this->db->get();
         return $query;
     }

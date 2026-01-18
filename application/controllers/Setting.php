@@ -300,6 +300,84 @@ class Setting extends CI_Controller {
 			}
 		}
 
+		public function submitnightsesion()
+		{
+			$user_id 			= $_SESSION['user_id'];
+			$nightsesiontime 	= $this->input->post('nightsesiontime');
+
+			if(!$nightsesiontime){
+				$response = [
+					'code' => '0',
+					'result' => 'Silahkan Isi Jam Anda Datang',
+					'csrf_name' => $this->csrf_name,
+					'csrf_hash' => $this->csrf_hash
+				];
+				echo json_encode($response);
+				die();
+			}else{
+				$check_night_session = $this->setting_model->check_night_session($nightsesiontime, $user_id);
+				if($check_night_session != null){
+					$response = [
+						'code' => '0',
+						'result' => 'Anda Sudah Mengajukan Sesi Malam',
+						'csrf_name' => $this->csrf_name,
+						'csrf_hash' => $this->csrf_hash
+					];
+					echo json_encode($response);
+					die();
+				}else{
+					$data_insert = [
+					'night_sesion_user'  		=> $user_id,
+					'night_sesion_time'  		=> $nightsesiontime,
+					];
+					$this->setting_model->insert_submitnightsesion($data_insert);
+
+					$response = [
+						'code' => '200',
+						'result' => 'Succes Request',
+						'csrf_name' => $this->csrf_name,
+						'csrf_hash' => $this->csrf_hash
+					];
+					echo json_encode($response);
+					die();
+				}
+			}
+		}
+
+		public function upload_image()
+		{
+
+			if (!empty($_FILES['member_image']['name'])) {
+			$config['upload_path']   = './assets/img/member/';
+			$config['allowed_types'] = 'jpg|jpeg|png|webp';
+			$config['max_size']      = 2048;
+			$config['encrypt_name']  = true;
+			$this->load->library('upload', $config);
+			if ($this->upload->do_upload('member_image')) {
+
+				$upload = $this->upload->data();
+				// update database
+				$this->db->where('member_id', $this->session->userdata('member_id'));
+				$this->db->update('member', [
+					'member_image' => $upload['file_name']
+				]);
+				echo json_encode([
+					'status'     => true,
+					'image_url'  => base_url('assets/uploads/member/' . $upload['file_name']),
+					'csrf_name'  => $this->security->get_csrf_token_name(),
+					'csrf_hash'  => $this->security->get_csrf_hash()
+				]);
+				}else {
+					echo json_encode([
+						'status'    => false,
+						'message'   => strip_tags($this->upload->display_errors()),
+						'csrf_name' => $this->security->get_csrf_token_name(),
+						'csrf_hash' => $this->security->get_csrf_hash()
+					]);
+				}
+			}
+		}
+
 
 	}
 

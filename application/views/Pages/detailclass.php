@@ -32,7 +32,7 @@ require DOC_ROOT_PATH . $this->config->item('header1');
     </div>
     <div id="appCapsule" class="extra-header-active full-height" style="margin-top:-10px !important;">
           <!-- Coin Status -->
-        <div class="section full gradientSection">
+        <div class="section full gradientSection" style="margin-top:-40px;">
             <img src="<?= $this->config->item('image_url'); ?>class/banner_detail.png">
         </div>
         <!-- * Coin Status -->

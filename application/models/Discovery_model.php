@@ -68,20 +68,48 @@ class discovery_model extends CI_Model {
             WHEN ms_class_package_type = 'Hari'  THEN ms_class_package_day_price
             WHEN ms_class_package_type = 'Tahun' THEN ms_class_package_year_price
         END AS package_price
-    ", false);
-    $this->db->from('ms_class_package');
-    $this->db->where('ms_class_package_id', $package_id);
-    $this->db->where('ms_class_package_active', 'Y');
-    $query = $this->db->get();
-    return $query;
+        ", false);
+        $this->db->from('ms_class_package');
+        $this->db->where('ms_class_package_id', $package_id);
+        $this->db->where('ms_class_package_active', 'Y');
+        $query = $this->db->get();
+        return $query;
     }
-    public function pt_information($coach_id)
+    public function pt_information($pt_id)
     {
         $this->db->select('*');
         $this->db->from('ms_coach');
         $this->db->join('ms_pt_price', 'ms_coach.coach_lvl = ms_pt_price.ms_pt_price_id', 'left');  
-        $this->db->where('ms_coach.coach_id', $coach_id);
+        $this->db->where('ms_coach.coach_id', $pt_id);
         $this->db->where('ms_coach.coach_active', 'Y');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function ms_pt_package($pt_id)
+    {
+        $this->db->select('*');
+        $this->db->from('ms_coach');
+        $this->db->join('ms_pt_package_price','ms_coach.coach_lvl = ms_pt_package_price.ms_pt_price_id');
+        $this->db->where('ms_coach.coach_id', $pt_id);
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function get_coach_lvl($pt_id)
+    {
+        $this->db->select('*');
+        $this->db->from('ms_coach');
+        $this->db->where('coach_id', $pt_id);
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function get_pt_price($package_id)
+    {
+        $this->db->select("ms_pt_package_price as price");
+        $this->db->from('ms_pt_package_price');
+        $this->db->where('ms_pt_package_price_id', $package_id);
         $query = $this->db->get();
         return $query;
     }

@@ -47,6 +47,22 @@ class setting_model extends CI_Model {
         $this->db->update('ms_member');
     }
 
+    public function insert_submitnightsesion($data_insert)
+    {
+        $this->db->insert('night_sesion', $data_insert);
+    }
+
+    public function check_night_session($nightsesiontime, $user_id)
+    {
+        $today = date('Y-m-d');
+        $this->db->select('*');
+        $this->db->from('night_sesion');
+        $this->db->where('night_sesion_user', $user_id);
+        $this->db->where('night_sesion_date', $today);
+        $query = $this->db->get();
+        return $query;
+    }
+
 }
 
 ?>

@@ -14,7 +14,11 @@ class payment_model extends CI_Model {
 
     public function transaction_detail($id, $category)
     {   
-        if($category == 'memberclass'){
+        if($category == 'memberpt'){
+            $this->db->select('*, ms_pt_package_price_name as class_name');
+        }else if($category == 'membergym'){
+            $this->db->select('*, ms_gym_package_name as class_name');
+        }else if($category == 'memberclass'){
             $this->db->select('*, ms_class_package_name as class_name');
         }else{
             $this->db->select('*');
